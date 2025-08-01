@@ -1,0 +1,12 @@
+.heading{   
+    color: rgb(126, 25, 228);
+    background-color: rgb(0, 255, 47);
+}
+
+body{
+    background-color: pink;
+}
+button{
+    background-color: aqua;
+    color: white;
+}
