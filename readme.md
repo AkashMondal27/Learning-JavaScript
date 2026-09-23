@@ -283,3 +283,500 @@ var → function-scoped
 let → block-scoped, reassignable
 const → block-scoped, not reassignable
 ```
+
+# Type Conversion in JavaScript
+
+## 1. What is Type Conversion?
+
+**Type Conversion** is the process of converting a value from one data type to another data type.
+
+For example, converting a `string` into a `number`:
+
+```js
+let age = "33";
+
+let value = Number(age);
+
+console.log(value);
+console.log(typeof value);
+```
+
+### Output
+
+```text
+33
+number
+```
+
+JavaScript provides several built-in functions for type conversion, such as:
+
+```js
+Number()
+String()
+Boolean()
+```
+
+---
+
+# 2. Number Conversion
+
+The `Number()` function converts a value into a **number**.
+
+### Syntax
+
+```js
+Number(value)
+```
+
+### Example 1: String Number
+
+```js
+let age = "33";
+
+let value = Number(age);
+
+console.log(value);
+console.log(typeof value);
+```
+
+Output:
+
+```text
+33
+number
+```
+
+---
+
+## 3. String Containing Characters
+
+If a string contains characters that cannot be converted into a valid number, `Number()` returns `NaN`.
+
+```js
+let age1 = "33abc";
+
+let value1 = Number(age1);
+
+console.log(value1);
+console.log(typeof value1);
+```
+
+Output:
+
+```text
+NaN
+number
+```
+
+### Important
+
+`NaN` means **Not a Number**.
+
+Although the value is `NaN`, its JavaScript type is still:
+
+```js
+typeof NaN
+```
+
+Output:
+
+```text
+number
+```
+
+---
+
+# 4. Converting `null` to Number
+
+```js
+let age2 = null;
+
+let value2 = Number(age2);
+
+console.log(value2);
+console.log(typeof value2);
+```
+
+Output:
+
+```text
+0
+number
+```
+
+### Why?
+
+JavaScript converts:
+
+```text
+null → 0
+```
+
+---
+
+# 5. Converting `undefined` to Number
+
+```js
+let value = Number(undefined);
+
+console.log(value);
+console.log(typeof value);
+```
+
+Output:
+
+```text
+NaN
+number
+```
+
+### Conversion
+
+```text
+undefined → NaN
+```
+
+---
+
+# 6. Converting Boolean to Number
+
+Boolean values can also be converted into numbers.
+
+### `true`
+
+```js
+let value = Number(true);
+
+console.log(value);
+console.log(typeof value);
+```
+
+Output:
+
+```text
+1
+number
+```
+
+### `false`
+
+```js
+let value = Number(false);
+
+console.log(value);
+console.log(typeof value);
+```
+
+Output:
+
+```text
+0
+number
+```
+
+### Conversion
+
+```text
+true  → 1
+false → 0
+```
+
+---
+
+# 7. Number Conversion Table
+
+| Original Value | `Number(value)` | Result Type |
+| -------------- | --------------: | ----------- |
+| `"33"`         |            `33` | `number`    |
+| `"33abc"`      |           `NaN` | `number`    |
+| `""`           |             `0` | `number`    |
+| `" "`          |             `0` | `number`    |
+| `"33.5"`       |          `33.5` | `number`    |
+| `null`         |             `0` | `number`    |
+| `undefined`    |           `NaN` | `number`    |
+| `true`         |             `1` | `number`    |
+| `false`        |             `0` | `number`    |
+| `NaN`          |           `NaN` | `number`    |
+
+---
+
+# 8. String Conversion
+
+The `String()` function converts a value into a string.
+
+
+### Syntax
+
+```js
+String(value)
+```
+### Example
+
+```js
+let value = 33;
+
+let result = String(value);
+
+console.log(result);
+console.log(typeof result);
+```
+
+Output:
+
+```text
+33
+string
+```
+
+Notice that `33` is now a **string**, not a number.
+
+---
+
+# 9. String Conversion Examples
+
+```js
+String(33);          // "33"
+String(true);        // "true"
+String(false);       // "false"
+String(null);        // "null"
+String(undefined);   // "undefined"
+```
+
+### Table
+
+| Original Value | `String(value)` | Result Type |
+| -------------- | --------------- | ----------- |
+| `33`           | `"33"`          | `string`    |
+| `33.5`         | `"33.5"`        | `string`    |
+| `true`         | `"true"`        | `string`    |
+| `false`        | `"false"`       | `string`    |
+| `null`         | `"null"`        | `string`    |
+| `undefined`    | `"undefined"`   | `string`    |
+| `NaN`          | `"NaN"`         | `string`    |
+
+---
+
+# 10. Boolean Conversion
+
+The `Boolean()` function converts a value into either:
+
+```text
+true
+```
+
+or
+
+```text
+false
+```
+
+### Syntax
+
+```js
+Boolean(value)
+```
+
+---
+
+# 11. Truthy and Falsy Values
+
+JavaScript considers some values **falsy**.
+
+When converted using `Boolean()`, they become `false`.
+
+### Falsy Values
+
+```js
+Boolean(false);      // false
+Boolean(0);          // false
+Boolean(-0);         // false
+Boolean(0n);         // false
+Boolean("");         // false
+Boolean(null);       // false
+Boolean(undefined);  // false
+Boolean(NaN);        // false
+```
+
+### Falsy Values Table
+
+| Value       | `Boolean(value)` |
+| ----------- | ---------------- |
+| `false`     | `false`          |
+| `0`         | `false`          |
+| `-0`        | `false`          |
+| `0n`        | `false`          |
+| `""`        | `false`          |
+| `null`      | `false`          |
+| `undefined` | `false`          |
+| `NaN`       | `false`          |
+
+---
+
+# 12. Truthy Values
+
+Almost every other value is **truthy**.
+
+```js
+Boolean("hello");   // true
+Boolean("0");       // true
+Boolean(1);         // true
+Boolean(-1);        // true
+Boolean([]);        // true
+Boolean({});        // true
+```
+
+### Truthy Values Table
+
+| Value          | `Boolean(value)` |
+| -------------- | ---------------- |
+| `"hello"`      | `true`           |
+| `"0"`          | `true`           |
+| `" "`          | `true`           |
+| `1`            | `true`           |
+| `-1`           | `true`           |
+| `[]`           | `true`           |
+| `{}`           | `true`           |
+| `function(){}` | `true`           |
+
+### Important
+
+An empty string is falsy:
+
+```js
+Boolean(""); // false
+```
+
+But an empty array and empty object are truthy:
+
+```js
+Boolean([]); // true
+Boolean({}); // true
+```
+
+---
+
+# 13. Boolean Conversion Table
+
+| Original Value | `Boolean(value)` | Result  |
+| -------------- | ---------------- | ------- |
+| `true`         | `true`           | `true`  |
+| `false`        | `false`          | `false` |
+| `1`            | `true`           | `true`  |
+| `0`            | `false`          | `false` |
+| `-1`           | `true`           | `true`  |
+| `"hello"`      | `true`           | `true`  |
+| `""`           | `false`          | `false` |
+| `"0"`          | `true`           | `true`  |
+| `null`         | `false`          | `false` |
+| `undefined`    | `false`          | `false` |
+| `NaN`          | `false`          | `false` |
+| `[]`           | `true`           | `true`  |
+| `{}`           | `true`           | `true`  |
+
+---
+
+# 14. Complete Type Conversion Table
+
+| Value       | To Number | To String           | To Boolean |
+| ----------- | --------: | ------------------- | ---------: |
+| `"33"`      |      `33` | `"33"`              |     `true` |
+| `"33abc"`   |     `NaN` | `"33abc"`           |     `true` |
+| `""`        |       `0` | `""`                |    `false` |
+| `" "`       |       `0` | `" "`               |     `true` |
+| `true`      |       `1` | `"true"`            |     `true` |
+| `false`     |       `0` | `"false"`           |    `false` |
+| `null`      |       `0` | `"null"`            |    `false` |
+| `undefined` |     `NaN` | `"undefined"`       |    `false` |
+| `0`         |       `0` | `"0"`               |    `false` |
+| `1`         |       `1` | `"1"`               |     `true` |
+| `NaN`       |     `NaN` | `"NaN"`             |    `false` |
+| `[]`        |       `0` | `""`                |     `true` |
+| `{}`        |     `NaN` | `"[object Object]"` |     `true` |
+
+---
+
+# 15. Explicit vs Implicit Type Conversion
+
+## Explicit Type Conversion
+
+When the developer manually converts a value using functions such as:
+
+```js
+Number()
+String()
+Boolean()
+```
+
+Example:
+
+```js
+let age = "22";
+
+let result = Number(age);
+
+console.log(result);
+```
+
+This is called **explicit type conversion**.
+
+---
+
+## Implicit Type Conversion
+
+JavaScript can automatically convert types during an operation.
+
+Example:
+
+```js
+let result = "10" + 5;
+
+console.log(result);
+```
+
+Output:
+
+```text
+105
+```
+
+Here, JavaScript converts `5` into a string and performs string concatenation.
+
+Another example:
+
+```js
+let result = "10" - 5;
+
+console.log(result);
+```
+
+Output:
+
+```text
+5
+```
+
+Here, JavaScript converts `"10"` into a number.
+
+---
+
+# 16. Explicit vs Implicit Conversion
+
+| Type     | Meaning                                    | Example        |
+| -------- | ------------------------------------------ | -------------- |
+| Explicit | Developer manually converts the type       | `Number("10")` |
+| Implicit | JavaScript automatically converts the type | `"10" - 5`     |
+
+
+
+
+## Quick Interview Definition
+
+> **Type conversion in JavaScript is the process of converting a value from one data type to another, either explicitly by the developer or implicitly by JavaScript during an operation.**
+
+### Main conversion functions
+
+```text
+Number()  → converts a value to Number
+String()  → converts a value to String
+Boolean() → converts a value to Boolean
+```
