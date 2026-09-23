@@ -958,7 +958,7 @@ The **increment (`++`)** and **decrement (`--`)** operators can be used in two f
 
 The important difference is **when the value is changed relative to when the expression uses the value**.
 
----
+
 
 ## 1. Prefix Operator
 
@@ -1180,3 +1180,86 @@ Type same?  → No
 ### Interview Definition
 
 > **`==` checks equality after type conversion, while `===` checks equality without type conversion and requires both the value and data type to be the same.**
+----
+# 4️⃣STACK & HEAP 
+### Stack:-
+
+Used to handle **primitive values** and **references**. When a primitive value is assigned to another variable, its **value is copied**, so changing the new variable does not change the original value.
+
+**Example:**
+
+```js
+let myname = "Akash Mondal";
+
+let User1 = myname;
+
+User1 = "Tushar Mondal";
+
+console.log(myname); // Akash Mondal
+console.log(User1);  // Tushar Mondal
+```
+
+**Work flow:-**
+
+```text
+              STACK
+       ___________________
+      |                   |
+      | User1             |
+      | "Tushar Mondal"   |  ← Changed copy
+      |___________________|
+      |                   |
+      | myname            |
+      | "Akash Mondal"    |  ← Original value
+      |___________________|
+```
+
+---
+
+### Heap:-
+
+Used to store **objects and other reference data**. When an object is assigned to another variable, the **reference is copied**, not the entire object. Therefore, both variables can point to the **same object in the Heap**.
+
+**Example:**
+
+```js
+let student = {
+    name: "Sumon",
+    email: "sumon@gmail.com"
+};
+
+let newStudent = student;
+
+newStudent.name = "MONOJ DEY";
+newStudent.email = "monojdey@gmail.com";
+
+console.log(student);
+console.log(newStudent);
+```
+
+**Work flow:-**
+
+```text
+                 STACK                         HEAP
+          ___________________          ______________________
+         |                   |        |                      |
+         | student           |-------->│ name: "MONOJ DEY"  |
+         |                   |        | email: "monojdey@   |
+         | newStudent        |----┐   | gmail.com"          |
+         |___________________|    │   |______________________|
+                                  │
+                                  └--------> Same Object
+```
+
+### Easy Difference
+
+```text
+STACK
+  ↓
+Primitive → Value is copied
+
+HEAP
+  ↓
+Object → Reference is copied
+```
+
