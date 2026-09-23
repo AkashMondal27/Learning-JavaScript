@@ -22,7 +22,7 @@ JavaScript can run directly in a browser and can also run outside the browser us
 
 ---
 
-# 2. Variables in JavaScript
+## 2. Variables in JavaScript
 
 A **variable** is a named container used to **store a value in memory** so that the value can be used and modified during program execution.
 
@@ -45,7 +45,7 @@ Here:
 
 ---
 
-# 3. Variable Declaration in JavaScript
+## 3. Variable Declaration in JavaScript
 
 JavaScript provides three keywords for declaring variables:
 
@@ -65,7 +65,7 @@ const country = "India";
 
 ---
 
-# 4. Rules for Variable Declaration
+## 4. Rules for Variable Declaration
 
 There are several rules that must be followed when naming variables in JavaScript.
 
@@ -162,7 +162,7 @@ Meaningful names make code easier to understand and maintain.
 
 ---
 
-# 5. `var`, `let`, and `const`
+## 5. `var`, `let`, and `const`
 
 | Keyword | Scope          | Reassign | Redeclare |
 | ------- | -------------- | -------- | --------- |
@@ -207,7 +207,7 @@ In modern JavaScript:
 
 ---
 
-# 6. Declaration vs Initialization
+## 6. Declaration vs Initialization
 
 ### Declaration
 
@@ -235,7 +235,7 @@ let age = 22;
 
 ---
 
-# 7. Reassignment
+## 7. Reassignment
 
 Reassignment means changing the value stored in a variable.
 
@@ -284,7 +284,7 @@ let → block-scoped, reassignable
 const → block-scoped, not reassignable
 ```
 
-# Type Conversion in JavaScript
+# 1️⃣ Type Conversion in JavaScript
 
 ## 1. What is Type Conversion?
 
@@ -318,7 +318,7 @@ Boolean()
 
 ---
 
-# 2. Number Conversion
+## 2. Number Conversion
 
 The `Number()` function converts a value into a **number**.
 
@@ -346,7 +346,7 @@ Output:
 number
 ```
 
----
+
 
 ## 3. String Containing Characters
 
@@ -386,7 +386,7 @@ number
 
 ---
 
-# 4. Converting `null` to Number
+## 4. Converting `null` to Number
 
 ```js
 let age2 = null;
@@ -414,7 +414,7 @@ null → 0
 
 ---
 
-# 5. Converting `undefined` to Number
+## 5. Converting `undefined` to Number
 
 ```js
 let value = Number(undefined);
@@ -438,7 +438,7 @@ undefined → NaN
 
 ---
 
-# 6. Converting Boolean to Number
+## 6. Converting Boolean to Number
 
 Boolean values can also be converted into numbers.
 
@@ -483,7 +483,7 @@ false → 0
 
 ---
 
-# 7. Number Conversion Table
+## 7. Number Conversion Table
 
 | Original Value | `Number(value)` | Result Type |
 | -------------- | --------------: | ----------- |
@@ -500,7 +500,7 @@ false → 0
 
 ---
 
-# 8. String Conversion
+## 8. String Conversion
 
 The `String()` function converts a value into a string.
 
@@ -532,7 +532,7 @@ Notice that `33` is now a **string**, not a number.
 
 ---
 
-# 9. String Conversion Examples
+## 9. String Conversion Examples
 
 ```js
 String(33);          // "33"
@@ -556,7 +556,7 @@ String(undefined);   // "undefined"
 
 ---
 
-# 10. Boolean Conversion
+## 10. Boolean Conversion
 
 The `Boolean()` function converts a value into either:
 
@@ -578,7 +578,7 @@ Boolean(value)
 
 ---
 
-# 11. Truthy and Falsy Values
+## 11. Truthy and Falsy Values
 
 JavaScript considers some values **falsy**.
 
@@ -610,9 +610,9 @@ Boolean(NaN);        // false
 | `undefined` | `false`          |
 | `NaN`       | `false`          |
 
----
 
-# 12. Truthy Values
+
+### 12. Truthy Values
 
 Almost every other value is **truthy**.
 
@@ -655,7 +655,7 @@ Boolean({}); // true
 
 ---
 
-# 13. Boolean Conversion Table
+## 13. Boolean Conversion Table
 
 | Original Value | `Boolean(value)` | Result  |
 | -------------- | ---------------- | ------- |
@@ -675,7 +675,7 @@ Boolean({}); // true
 
 ---
 
-# 14. Complete Type Conversion Table
+## 14. Complete Type Conversion Table
 
 | Value       | To Number | To String           | To Boolean |
 | ----------- | --------: | ------------------- | ---------: |
@@ -759,7 +759,7 @@ Here, JavaScript converts `"10"` into a number.
 
 ---
 
-# 16. Explicit vs Implicit Conversion
+## 16. Explicit vs Implicit Conversion
 
 | Type     | Meaning                                    | Example        |
 | -------- | ------------------------------------------ | -------------- |
@@ -769,7 +769,7 @@ Here, JavaScript converts `"10"` into a number.
 
 
 
-## Quick Interview Definition
+# Quick Interview Definition
 
 > **Type conversion in JavaScript is the process of converting a value from one data type to another, either explicitly by the developer or implicitly by JavaScript during an operation.**
 
@@ -780,3 +780,213 @@ Number()  → converts a value to Number
 String()  → converts a value to String
 Boolean() → converts a value to Boolean
 ```
+# 2️⃣What is an Operator in JavaScript?
+
+An **operator** is a special symbol or keyword used to **perform an operation on one or more values (operands)**.
+
+### Example
+
+```js
+let a = 10;
+let b = 5;
+
+let result = a + b;
+
+console.log(result); // 15
+```
+
+Here:
+
+* `a` and `b` → **Operands**
+* `+` → **Operator**
+* `a + b` → **Expression**
+* `15` → **Result**
+
+
+
+## Types of Operators in JavaScript
+
+JavaScript operators can be broadly classified as:
+
+| Type                     | Examples                           | Purpose                                   |                              |                               |
+| ------------------------ | ---------------------------------- | ----------------------------------------- | ---------------------------- | ----------------------------- |
+| **Arithmetic Operators** | `+`, `-`, `*`, `/`, `%`, `**`      | Mathematical calculations                 |                              |                               |
+| **Assignment Operators** | `=`, `+=`, `-=`, `*=`, `/=`        | Assign/update values                      |                              |                               |
+| **Comparison Operators** | `==`, `===`, `!=`, `!==`, `>`, `<` | Compare values                                                                                         
+| **Increment/Decrement**  | `++`, `--`                         | Increase/decrease by 1                    |                              |                               |
+| **Unary Operators**      | `typeof`, `++`, `--`, `!`          | Work with a single operand                |                              |                               |
+| **Ternary Operator**     | `condition ? value1 : value2`      | Short form of `if...else`                 |                              
+
+## Prefix and Postfix Operators
+
+The **increment (`++`)** and **decrement (`--`)** operators can be used in two forms:
+
+1. **Prefix**
+2. **Postfix**
+
+The important difference is **when the value is changed relative to when the expression uses the value**.
+
+---
+
+## 1. Prefix Operator
+
+In **prefix**, the operator comes **before** the variable.
+
+```js
+++x;
+--x;
+```
+
+### Example
+
+```js
+let x = 5;
+
+let result = ++x;
+
+console.log(x);      // 6
+console.log(result); // 6
+```
+
+### Workflow
+
+```text
+Initial value
+    ↓
+x = 5
+    ↓
+++x
+    ↓
+Increase x by 1
+    ↓
+x = 6
+    ↓
+Use the updated value
+    ↓
+result = 6
+```
+
+So:
+
+> **Prefix → Change first → Use later**
+
+---
+
+# 2. Postfix Operator
+
+In **postfix**, the operator comes **after** the variable.
+
+```js
+x++;
+x--;
+```
+
+### Example
+
+```js
+let x = 5;
+
+let result = x++;
+
+console.log(x);      // 6
+console.log(result); // 5
+```
+
+### Workflow
+
+```text
+Initial value
+    ↓
+x = 5
+    ↓
+x++
+    ↓
+Use the current value
+    ↓
+result = 5
+    ↓
+Increase x by 1
+    ↓
+x = 6
+```
+
+So:
+
+> **Postfix → Use first → Change later**
+
+
+
+## Prefix vs Postfix
+
+| Operator              | Example | First Action | `x` after operation | Value of expression |
+| --------------------- | ------- | ------------ | ------------------: | ------------------: |
+| **Prefix Increment**  | `++x`   | Increase     |                 `6` |                 `6` |
+| **Postfix Increment** | `x++`   | Use          |                 `6` |                 `5` |
+| **Prefix Decrement**  | `--x`   | Decrease     |                 `4` |                 `4` |
+| **Postfix Decrement** | `x--`   | Use          |                 `4` |                 `5` |
+
+Assume initially:
+
+```js
+let x = 5;
+```
+
+
+
+## Easy Interview Definition
+
+**Prefix:** The variable is modified **before its value is used** in the expression.
+
+```js
+let x = 5;
+console.log(++x); // 6
+```
+
+**Postfix:** The current value is **used first**, and the variable is modified afterward.
+
+```js
+let x = 5;
+console.log(x++); // 5
+console.log(x);   // 6
+```
+
+### Remember this shortcut:
+
+```text
+PREFIX  → Change → Use
+POSTFIX → Use → Change
+```
+
+## Logical Operators
+
+Logical operators are used to **combine conditions**.
+
+| Operator | Symbol | Meaning                             |
+| -------- | ------ | ----------------------------------- |
+| AND      | `&&`   | Both conditions must be true        |
+| OR       | `\|\|` | At least one condition must be true |
+| NOT      | `!`    | Reverses true/false                 |
+
+### Example
+
+```js
+let age = 20;
+
+console.log(age >= 18 && age <= 60);
+// true
+
+console.log(age >= 18 || age <= 10);
+// true
+
+console.log(!(age >= 18));
+// false
+```
+
+### Easy to Remember
+
+```text
+&&  → AND → Both must be true
+||  → OR  → One must be true
+!   → NOT → Reverses the result
+```
+
