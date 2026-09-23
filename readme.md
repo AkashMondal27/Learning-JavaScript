@@ -268,9 +268,9 @@ const name = "Akash";
 name = "Rahul"; // Error
 ```
 
----
 
-# Quick Interview Definition
+
+## Quick Interview Definition
 
 > **JavaScript is a high-level, dynamically typed programming language primarily used to build interactive and dynamic web applications.**
 
@@ -283,8 +283,141 @@ var → function-scoped
 let → block-scoped, reassignable
 const → block-scoped, not reassignable
 ```
+---
+# 1️⃣ JavaScript Data Types
 
-# 1️⃣ Type Conversion in JavaScript
+JavaScript data types are mainly divided into two categories:
+
+```text
+Data Types
+│
+├── Primitive
+│
+└── Non-Primitive (Reference)
+```
+
+## 1. Primitive Data Types
+
+Primitive values are **simple/basic values**. They are stored and handled as individual values.
+
+### Types of Primitive Data Types
+
+| Data Type     | Example                 |
+| ------------- | ----------------------- |
+| **String**    | `"Akash"`               |
+| **Number**    | `25`, `3.14`            |
+| **BigInt**    | `12345678901234567890n` |
+| **Boolean**   | `true`, `false`         |
+| **Undefined** | `undefined`             |
+| **Null**      | `null`                  |
+| **Symbol**    | `Symbol("id")`          |
+
+### Example
+
+```js
+// String
+let name = "Akash";
+
+// Number
+let age = 25;
+
+// BigInt
+let bigNumber = 12345678901234567890n;
+
+// Boolean
+let isStudent = true;
+
+// Undefined
+let value;
+
+// Null
+let data = null;
+
+// Symbol
+let id = Symbol("id");
+
+console.log(typeof name);       // string
+console.log(typeof age);        // number
+console.log(typeof bigNumber);  // bigint
+console.log(typeof isStudent);  // boolean
+console.log(typeof value);      // undefined
+console.log(typeof data);       // object
+console.log(typeof id);         // symbol
+```
+
+> **Note:** `typeof null` returns `"object"` because of a historical JavaScript behavior. `null` is still considered a primitive value.
+
+
+
+## 2. Non-Primitive (Reference) Data Types
+
+Non-primitive values are **objects/reference values**. They can store multiple values or more complex data.
+
+Common examples:
+
+* **Object**
+* **Array**
+* **Function**
+
+### Object
+
+```js
+let user = {
+    name: "Akash",
+    age: 25
+};
+
+console.log(user.name);
+// Akash
+```
+
+### Array
+
+```js
+let fruits = ["Apple", "Mango", "Banana"];
+
+console.log(fruits[0]);
+// Apple
+```
+
+### Function
+
+```js
+function greet() {
+    console.log("Hello!");
+}
+
+greet();
+```
+
+## Primitive vs Non-Primitive
+
+| Primitive                         | Non-Primitive                     |
+| --------------------------------- | --------------------------------- |
+| Stores a simple value             | Stores a reference to a value     |
+| Immutable value                   | Objects can be modified           |
+| Examples: String, Number, Boolean | Examples: Object, Array, Function |
+| Compared mainly by value          | Objects are compared by reference |
+
+### Reference Example
+
+```js
+let user1 = {
+    name: "Akash"
+};
+
+let user2 = user1;
+
+user2.name = "Rahul";
+
+console.log(user1.name);
+// Rahul
+```
+
+Both `user1` and `user2` refer to the **same object**.
+
+---
+# 2️⃣ Type Conversion in JavaScript
 
 ## 1. What is Type Conversion?
 
@@ -695,7 +828,7 @@ Boolean({}); // true
 
 ---
 
-# 15. Explicit vs Implicit Type Conversion
+## 15. Explicit vs Implicit Type Conversion
 
 ## Explicit Type Conversion
 
@@ -719,7 +852,7 @@ console.log(result);
 
 This is called **explicit type conversion**.
 
----
+
 
 ## Implicit Type Conversion
 
@@ -757,7 +890,7 @@ Output:
 
 Here, JavaScript converts `"10"` into a number.
 
----
+
 
 ## 16. Explicit vs Implicit Conversion
 
@@ -769,7 +902,7 @@ Here, JavaScript converts `"10"` into a number.
 
 
 
-# Quick Interview Definition
+## Quick Interview Definition
 
 > **Type conversion in JavaScript is the process of converting a value from one data type to another, either explicitly by the developer or implicitly by JavaScript during an operation.**
 
@@ -780,7 +913,8 @@ Number()  → converts a value to Number
 String()  → converts a value to String
 Boolean() → converts a value to Boolean
 ```
-# 2️⃣What is an Operator in JavaScript?
+---
+# 3️⃣ What is an Operator in JavaScript?
 
 An **operator** is a special symbol or keyword used to **perform an operation on one or more values (operands)**.
 
@@ -872,7 +1006,7 @@ So:
 
 ---
 
-# 2. Postfix Operator
+## 2. Postfix Operator
 
 In **postfix**, the operator comes **after** the variable.
 
@@ -990,3 +1124,61 @@ console.log(!(age >= 18));
 !   → NOT → Reverses the result
 ```
 
+The main difference is **type conversion**.
+
+---
+# `==` VS `===` 
+### `==` — Loose Equality
+
+`==` compares the values **after converting the types if necessary**.
+
+```js
+console.log(5 == "5");
+// true
+```
+
+Here:
+
+```text
+5        → number
+"5"      → string
+
+5 == "5"
+   ↓
+JavaScript converts "5" to 5
+   ↓
+5 == 5
+   ↓
+true
+```
+
+
+### `===` — Strict Equality
+
+`===` compares **both value AND data type**. It does **not** perform type conversion.
+
+```js
+console.log(5 === "5");
+// false
+```
+
+```text
+5        → number
+"5"      → string
+
+Value same? → Yes
+Type same?  → No
+             ↓
+           false
+```
+
+### Easy Comparison
+
+| Operator | Name            | Type Conversion | Example     | Result  |
+| -------- | --------------- | --------------- | ----------- | ------- |
+| `==`     | Loose Equality  | Yes             | `5 == "5"`  | `true`  |
+| `===`    | Strict Equality | No              | `5 === "5"` | `false` |
+
+### Interview Definition
+
+> **`==` checks equality after type conversion, while `===` checks equality without type conversion and requires both the value and data type to be the same.**
