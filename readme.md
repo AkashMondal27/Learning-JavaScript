@@ -1,5 +1,5 @@
 # JavaScript Notes
-
+----
 ## 1. What is JavaScript?
 
 **JavaScript (JS)** is a **high-level, dynamically typed, interpreted programming language** mainly used to make web pages **interactive and dynamic**.
@@ -20,7 +20,6 @@ console.log("Hello, JavaScript!");
 
 JavaScript can run directly in a browser and can also run outside the browser using environments such as **Node.js**.
 
----
 
 ## 2. Variables in JavaScript
 
@@ -43,7 +42,7 @@ Here:
 * `age` → variable
 * `22` → value
 
----
+
 
 ## 3. Variable Declaration in JavaScript
 
@@ -63,7 +62,7 @@ let age = 22;
 const country = "India";
 ```
 
----
+
 
 ## 4. Rules for Variable Declaration
 
@@ -205,7 +204,6 @@ In modern JavaScript:
 * Use `let` when the value needs to be reassigned.
 * Avoid `var` in modern code unless there is a specific reason to use it.
 
----
 
 ## 6. Declaration vs Initialization
 
@@ -233,7 +231,7 @@ Both can be done together:
 let age = 22;
 ```
 
----
+
 
 ## 7. Reassignment
 
@@ -1004,7 +1002,7 @@ So:
 
 > **Prefix → Change first → Use later**
 
----
+
 
 ## 2. Postfix Operator
 
