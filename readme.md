@@ -1263,3 +1263,155 @@ HEAP
 Object → Reference is copied
 ```
 
+----
+
+
+# String Methods — JavaScript
+
+## What are Methods in JavaScript?
+
+A **method** is a function that is associated with an object or data type and is used to **perform a specific operation**.
+
+
+###  Important String Methods Examples
+
+#### 1. `toUpperCase()`
+
+Converts a string to uppercase.
+
+```js
+let name = "Akash Mondal";
+
+console.log(name.toUpperCase());
+// AKASH MONDAL
+```
+Here:
+
+* `name` → String
+* `toUpperCase()` → String method
+* `()` → calls the method
+
+
+#### 2. `toLowerCase()`
+
+Converts a string to lowercase.
+
+```js
+let name = "Akash MONDAL";
+
+console.log(name.toLowerCase());
+// akash mondal
+```
+
+#### 3. `includes()`
+
+Checks whether a string contains a particular value.
+
+```js
+let name = "Akash Mondal";
+
+console.log(name.includes("Mondal"));
+// true
+```
+
+It returns a **Boolean**: `true` or `false`.
+
+#### 4. `indexOf()`
+
+Returns the index of the first occurrence of a value.
+
+```js
+let name = "Akash Mondal";
+
+console.log(name.indexOf("M"));
+// 6
+```
+
+Remember that JavaScript indexes start from **0**:
+
+```text
+A k a s h   M o n d a l
+0 1 2 3 4 5 6 7 8 9 10 11 12
+```
+
+#### 5. `slice()`
+
+Extracts a portion of a string.
+
+```js
+let name = "Akash Mondal";
+
+console.log(name.slice(0, 5));
+// Akash
+```
+#### 6. `trim()`
+Removes spaces from both 
+```js
+let name = "  Akash Mondal  ";
+
+console.log(name.trim());
+// Akash Mondal
+```
+
+
+
+## Important String Methods
+
+| Method          | Use                                 |
+| --------------- | ----------------------------------- |
+| `at()`          | Gets character at an index          |
+| `charAt()`      | Gets character at an index          |
+| `includes()`    | Checks if a string contains a value |
+| `indexOf()`     | Finds the first index               |
+| `lastIndexOf()` | Finds the last index                |
+| `startsWith()`  | Checks the beginning                |
+| `endsWith()`    | Checks the ending                   |
+| `slice()`       | Extracts part of a string           |
+| `substring()`   | Extracts part of a string           |
+| `split()`       | Converts string into an array       |
+| `replace()`     | Replaces a value                    |
+| `replaceAll()`  | Replaces all occurrences            |
+| `trim()`        | Removes spaces from both sides      |
+| `toLowerCase()` | Converts to lowercase               |
+| `toUpperCase()` | Converts to uppercase               |
+| `repeat()`      | Repeats a string                    |
+| `concat()`      | Joins strings                       |
+| `padStart()`    | Adds characters at the beginning    |
+| `padEnd()`      | Adds characters at the end          |
+| `match()`       | Finds matches using a pattern       |
+| `search()`      | Searches using a pattern            |
+
+### Easy Flow
+
+```text
+String
+   │
+   ├── Search
+   │   ├── includes()
+   │   ├── indexOf()
+   │   ├── lastIndexOf()
+   │   └── search()
+   │
+   ├── Extract
+   │   ├── at()
+   │   ├── charAt()
+   │   ├── slice()
+   │   └── substring()
+   │
+   ├── Modify
+   │   ├── replace()
+   │   ├── replaceAll()
+   │   ├── toUpperCase()
+   │   └── toLowerCase()
+   │
+   ├── Remove Spaces
+   │   ├── trim()
+   │   ├── trimStart()
+   │   └── trimEnd()
+   │
+   └── Convert
+       ├── split()
+       └── toString()
+```
+
+**Note:** Methods such as `anchor()`, `big()`, `blink()`, `bold()`, `fixed()`, `fontcolor()`, `fontsize()`, `italics()`, `link()`, `small()`, `strike()`, `sub()`, and `sup()` appear in the browser's prototype because of legacy web APIs. **Don't use them in modern projects.**

@@ -1,3 +1,4 @@
+
 // <1> slice  => returns part of strings 
 let str="good morning";
 console.log(str.slice(1,5));
