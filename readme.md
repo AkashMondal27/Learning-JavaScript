@@ -1425,3 +1425,195 @@ String
 ```
 
 **Note:** Methods such as `anchor()`, `big()`, `blink()`, `bold()`, `fixed()`, `fontcolor()`, `fontsize()`, `italics()`, `link()`, `small()`, `strike()`, `sub()`, and `sup()` appear in the browser's prototype because of legacy web APIs. **Don't use them in modern projects.**
+
+---
+ # 6️⃣ JavaScript Number & Math
+
+# 1. Number
+
+`Number` is a JavaScript data type used to represent **integers, decimals, positive numbers, and negative numbers**.
+
+### Basic Number
+
+```js
+const number = 100;
+
+console.log(number);
+```
+
+### Number Object
+
+```js
+const balance = new Number(100);
+
+console.log(balance);
+```
+
+> `100` is a primitive number, while `new Number(100)` creates a Number object. In normal JavaScript, prefer the primitive form.
+
+
+
+## Number Methods
+
+| Method             | Use                                    |
+| ------------------ | -------------------------------------- |
+| `toFixed()`        | Controls the number of decimal places  |
+| `toPrecision()`    | Controls significant digits            |
+| `toLocaleString()` | Formats a number according to a locale |
+| `toString()`       | Converts a number to a string          |
+| `valueOf()`        | Returns the primitive value            |
+
+### Examples
+
+```js
+const number = 261.22142245;
+
+console.log(number.toFixed(2));
+// 261.22
+
+console.log(number.toPrecision(4));
+// 261.2
+
+const hundreds = 100000000;
+
+console.log(hundreds.toLocaleString());
+// 100,000,000
+
+console.log(hundreds.toLocaleString("en-IN"));
+// 10,00,00,000
+```
+
+---
+
+## Number Properties
+
+| Property                   | Meaning                  |
+| -------------------------- | ------------------------ |
+| `Number.MAX_VALUE`         | Largest finite number    |
+| `Number.MIN_VALUE`         | Smallest positive number |
+| `Number.MAX_SAFE_INTEGER`  | Largest safe integer     |
+| `Number.MIN_SAFE_INTEGER`  | Smallest safe integer    |
+| `Number.POSITIVE_INFINITY` | Positive infinity        |
+| `Number.NEGATIVE_INFINITY` | Negative infinity        |
+| `Number.NaN`               | Not a Number             |
+
+```js
+console.log(Number.MAX_VALUE);
+console.log(Number.MIN_VALUE);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(Number.MIN_SAFE_INTEGER);
+```
+
+---
+
+# Math Object
+
+`Math` is a built-in JavaScript object that provides **mathematical constants and methods**.
+
+### Math Properties
+
+```js
+console.log(Math.PI);
+console.log(Math.E);
+```
+
+### Common Math Methods
+
+| Method          | Use                                     |
+| --------------- | --------------------------------------- |
+| `Math.round()`  | Rounds to nearest integer               |
+| `Math.floor()`  | Rounds down                             |
+| `Math.ceil()`   | Rounds up                               |
+| `Math.trunc()`  | Removes decimal part                    |
+| `Math.abs()`    | Returns absolute value                  |
+| `Math.sqrt()`   | Returns square root                     |
+| `Math.pow()`    | Returns power                           |
+| `Math.max()`    | Returns largest value                   |
+| `Math.min()`    | Returns smallest value                  |
+| `Math.random()` | Returns random number from `0` to `< 1` |
+
+### Examples
+
+```js
+console.log(Math.round(4.6)); // 5
+console.log(Math.floor(4.9)); // 4
+console.log(Math.ceil(4.1));  // 5
+console.log(Math.trunc(4.9)); // 4
+
+console.log(Math.abs(-10));   // 10
+console.log(Math.sqrt(25));   // 5
+console.log(Math.pow(2, 3));  // 8
+
+console.log(Math.max(10, 20, 5)); // 20
+console.log(Math.min(10, 20, 5)); // 5
+
+console.log(Math.random()); // 0 to < 1
+```
+
+
+
+## Random Number Between Two Values
+
+```js
+const min = 10;
+const max = 20;
+
+console.log(
+    Math.floor(Math.random() * (max - min + 1)) + min
+);
+```
+
+### Formula
+
+```text
+Math.floor(Math.random() * (max - min + 1)) + min
+```
+
+**Generates a random integer between `min` and `max`, including both.**
+
+Example:
+
+```text
+min = 10
+max = 20
+
+Possible output:
+10, 11, 12, 13, ... 18, 19, 20
+```
+
+### Easy Structure
+
+```text
+Number
+│
+├── Properties
+│   ├── MAX_VALUE
+│   ├── MIN_VALUE
+│   ├── MAX_SAFE_INTEGER
+│   └── MIN_SAFE_INTEGER
+│
+└── Methods
+    ├── toFixed()
+    ├── toPrecision()
+    ├── toLocaleString()
+    └── toString()
+
+
+Math
+│
+├── Properties
+│   ├── Math.PI
+│   └── Math.E
+│
+└── Methods
+    ├── round()
+    ├── floor()
+    ├── ceil()
+    ├── trunc()
+    ├── abs()
+    ├── sqrt()
+    ├── pow()
+    ├── max()
+    ├── min()
+    └── random()
+```
