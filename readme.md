@@ -1266,7 +1266,7 @@ Object → Reference is copied
 ----
 
 
-# String Methods — JavaScript
+# 5️⃣ String Methods — JavaScript
 
 ## What are Methods in JavaScript?
 
@@ -1351,6 +1351,16 @@ let name = "  Akash Mondal  ";
 
 console.log(name.trim());
 // Akash Mondal
+```
+#### 7. `split()` 
+ Converts a string into an array
+```js
+let text = "HTML,CSS,JavaScript";
+
+let result = text.split(",");
+
+console.log(result);
+// ["HTML", "CSS", "JavaScript"]
 ```
 
 
