@@ -1,5 +1,6 @@
 # JavaScript Notes
-----
+# ✅ 1. Basics
+
 ## 1. What is JavaScript?
 
 **JavaScript (JS)** is a **high-level, dynamically typed, interpreted programming language** mainly used to make web pages **interactive and dynamic**.
@@ -2146,5 +2147,7 @@ toISOString() → ISO/UTC string
 
 new Date() → Date object
 ```
-
+---
+---
+# ✅ 2. Arrays
 
