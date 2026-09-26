@@ -1,4 +1,8 @@
 # JavaScript Notes
+### MDN Documentation:- 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
+---
 # ✅ 1. Basics
 
 ## 1. What is JavaScript?
@@ -1623,6 +1627,9 @@ Math
 
 The **`Date` object** is one of the most commonly used built-in objects in JavaScript for working with **dates, times, timestamps, formatting, and date calculations**.
 
+###  MDN Documentation :-
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+
 
 
 ## 1. Creating a Date
@@ -2148,6 +2155,904 @@ toISOString() → ISO/UTC string
 new Date() → Date object
 ```
 ---
+
+# ✅ 2.  JavaScript Arrays :- 
+ ### MDN documentation :- 
+ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+ 
+ ---
+
+
+
+## What is an Array?
+
+An **Array** is a special data structure in JavaScript used to store **multiple values in a single variable**.
+
+- Arrays are **zero-indexed**.
+- The first element is at index `0`.
+- An array can contain different data types.
+- Arrays are **objects** in JavaScript.
+
+```js
+const myArr = [10, 20, 1, 2, 5];
+
+const arr1 = ["Akash", "Mondal", 1, 2, 3, 10, "fruits"];
+
+console.log(myArr);
+console.log(arr1);
+```
+
+### Array Indexing
+
+```text
+Array:     ["Akash", "Mondal", 1, 2, 3]
+Index:         0        1      2  3  4
+```
+
+Access an element:
+
+```js
+console.log(arr1[0]); // Akash
+console.log(arr1[2]); // 1
+```
+
+
+## 🔹 Common Array Methods
+
+## 1. `push()`
+
+`push()` adds one or more elements to the **end of an array**.
+
+### Syntax
+
+```js
+array.push(element);
+```
+
+### Example
+
+```js
+const myArr = [10, 20, 1, 2, 5];
+
+myArr.push("Akash");
+
+console.log(myArr);
+```
+
+Output:
+
+```text
+[10, 20, 1, 2, 5, "Akash"]
+```
+
+### Interview Point
+
+> `push()` modifies the original array and returns the **new length of the array**.
+
+```js
+const arr = [1, 2, 3];
+
+const result = arr.push(4);
+
+console.log(result); // 4
+console.log(arr);    // [1, 2, 3, 4]
+```
+
+
+
+## 🔹 2. `pop()`
+
+`pop()` removes the **last element** from an array.
+
+```js
+const arr = [10, 20, 30, 40];
+
+arr.pop();
+
+console.log(arr);
+```
+
+Output:
+
+```text
+[10, 20, 30]
+```
+
+### Interview Point
+
+> `pop()` modifies the original array and returns the **removed element**.
+
+```js
+const arr = [10, 20, 30];
+
+const removed = arr.pop();
+
+console.log(removed); // 30
+console.log(arr);     // [10, 20]
+```
+
+
+
+## 🔹 3. `unshift()`
+
+`unshift()` adds one or more elements to the **beginning of an array**.
+
+```js
+const myArr = [10, 20, 30];
+
+myArr.unshift("Akash");
+
+console.log(myArr);
+```
+
+Output:
+
+```text
+["Akash", 10, 20, 30]
+```
+
+### Interview Point
+
+> `unshift()` modifies the original array and returns the **new length**.
+
+
+
+## 🔹 4. `shift()`
+
+`shift()` removes the **first element** from an array.
+
+```js
+const myArr = [10, 20, 30];
+
+myArr.shift();
+
+console.log(myArr);
+```
+
+Output:
+
+```text
+[20, 30]
+```
+
+### Interview Point
+
+> `shift()` modifies the original array and returns the **removed element**.
+
+
+
+## 🔹 `push()` vs `pop()` vs `shift()` vs `unshift()`
+
+| Method | Operation | Position | Changes Original? | Return Value |
+|---|---|---|---|---|
+| `push()` | Add | End | ✅ Yes | New length |
+| `pop()` | Remove | End | ✅ Yes | Removed element |
+| `unshift()` | Add | Beginning | ✅ Yes | New length |
+| `shift()` | Remove | Beginning | ✅ Yes | Removed element |
+
+
+## 🔹 5. `includes()`
+
+`includes()` checks whether an array contains a particular value.
+
+It returns a **Boolean**:
+
+```text
+true
+false
+```
+
+### Example
+
+```js
+const myArr = [10, 20, 1, 2, 5];
+
+console.log(myArr.includes(2));   // true
+console.log(myArr.includes(100)); // false
+
+console.log(typeof myArr.includes(2)); // boolean
+```
+
+### Interview Definition
+
+> `includes()` determines whether an array contains a specified value and returns `true` or `false`.
+
+
+
+## 🔹 6. `indexOf()`
+
+`indexOf()` returns the **index of the first occurrence** of a specified element.
+
+```js
+const myArr = [10, 20, 1, 2, 5];
+
+console.log(myArr.indexOf(1));   // 2
+console.log(myArr.indexOf(101)); // -1
+```
+
+If the element does not exist:
+
+```text
+-1
+```
+
+### Interview Definition
+
+> `indexOf()` returns the first index at which a specified element is found. If it is not found, it returns `-1`.
+
+### Important
+
+```js
+const arr = [10, 20, 10, 30];
+
+console.log(arr.indexOf(10)); // 0
+```
+
+It returns the **first matching index**.
+
+
+
+## 🔹 7. `join()`
+
+`join()` converts the elements of an array into a **string**.
+
+```js
+const myArr = [10, 20, 1, 2, 5];
+
+const joinArr = myArr.join();
+
+console.log(joinArr);
+```
+
+Output:
+
+```text
+10,20,1,2,5
+```
+
+You can also specify a separator:
+
+```js
+const fruits = ["Apple", "Mango", "Banana"];
+
+console.log(fruits.join(" - "));
+```
+
+Output:
+
+```text
+Apple - Mango - Banana
+```
+
+### Interview Definition
+
+> `join()` creates and returns a new string by concatenating all array elements using a specified separator.
+
+
+
+## 🔹 8. `slice()`
+
+`slice()` extracts a portion of an array and returns it as a **new array**.
+
+### Syntax
+
+```js
+array.slice(start, end);
+```
+
+The `end` index is **not included**.
+
+```js
+const akArr = [1, 40, 29, 10, "Akash", "Mondal", "Chhora"];
+
+const akA1 = akArr.slice(0, 4);
+
+console.log("Original Array:", akArr);
+console.log(akA1);
+```
+
+Output:
+
+```text
+Original Array:
+[1, 40, 29, 10, "Akash", "Mondal", "Chhora"]
+
+New Array:
+[1, 40, 29, 10]
+```
+
+### Important
+
+```text
+slice(0, 4)
+
+Index:   0   1   2   3   4
+         ↑-----------↑
+         Included    Excluded
+```
+
+### Interview Definition
+
+> `slice()` returns a shallow copy of a portion of an array without modifying the original array.
+
+
+
+## 🔹 9. `splice()`
+
+`splice()` is used to **add, remove, or replace elements** in an array.
+
+Unlike `slice()`, `splice()` **modifies the original array**.
+
+### Example
+
+```js
+const akArr = [1, 40, 29, 10, "Akash", "Mondal", "Chhora"];
+
+const akA2 = akArr.splice(0, 4);
+
+console.log("Original Array:", akArr);
+console.log("Removed Elements:", akA2);
+```
+
+Output:
+
+```text
+Original Array:
+["Akash", "Mondal", "Chhora"]
+
+Removed Elements:
+[1, 40, 29, 10]
+```
+
+### Important Correction
+
+Your original comment says:
+
+> `splice` only shows the part from starting index to ending index.
+
+More precisely, `splice()` **removes/replaces elements from the original array**, depending on the arguments.
+
+### Syntax
+
+```js
+array.splice(start, deleteCount);
+```
+
+Example:
+
+```js
+const arr = [10, 20, 30, 40, 50];
+
+arr.splice(1, 2);
+
+console.log(arr);
+```
+
+Output:
+
+```text
+[10, 40, 50]
+```
+
+`20` and `30` were removed.
+
+
+
+## ⭐ `slice()` vs `splice()`
+
+This is a **very common interview question**.
+
+| Feature | `slice()` | `splice()` |
+|---|---|---|
+| Purpose | Extract elements | Add/remove/replace elements |
+| Original array | ❌ Not modified | ✅ Modified |
+| Returns | New array | Removed elements |
+| End parameter | End index | Delete count |
+| Common use | Copy/extract | Modify array |
+
+
+
+## 🔹 10. `push()` with Another Array
+
+When an array is passed directly to `push()`, the **entire array becomes one element**.
+
+```js
+const marvel_heros = ["Thor", "Ironman", "Spiderman"];
+const dc_heros = ["Superman", "Flash", "Batman"];
+
+const heroes = marvel_heros.push(dc_heros);
+
+console.log(heroes);
+console.log(marvel_heros);
+```
+
+Output:
+
+```text
+4
+```
+
+Because `push()` returns the **new length**.
+
+The original array becomes:
+
+```js
+[
+    "Thor",
+    "Ironman",
+    "Spiderman",
+    ["Superman", "Flash", "Batman"]
+]
+```
+
+
+
+## 🔹 11. `concat()`
+
+`concat()` combines two or more arrays and returns a **new array**.
+
+```js
+const fruits = ["Apple", "Mango"];
+const moreFruits = ["Banana", "Orange"];
+
+const allFruits = fruits.concat(moreFruits);
+
+console.log(allFruits);
+```
+
+Output:
+
+```text
+["Apple", "Mango", "Banana", "Orange"]
+```
+
+### Interview Definition
+
+> `concat()` is used to merge arrays and returns a new array without modifying the original arrays.
+
+```text
+Array A + Array B
+       ↓
+    concat()
+       ↓
+ New Combined Array
+```
+
+
+
+## 🔹 12. Spread Syntax `...`
+
+There is **no `spread()` method**.
+
+`...` is called the **spread syntax**.
+
+It expands/unpacks the elements of an array or properties of an object.
+
+```js
+const a = ["A", "B", "C"];
+const b = ["a", "b", "c"];
+
+const ab = [...a, ...b];
+
+console.log(ab);
+```
+
+Output:
+
+```text
+["A", "B", "C", "a", "b", "c"]
+```
+
+### Interview Definition
+
+> Spread syntax `...` expands the elements of an iterable, such as an array, into individual elements.
+
+
+
+## 🔹 `concat()` vs Spread `...`
+
+| `concat()` | Spread `...` |
+|---|---|
+| Method | Syntax |
+| `a.concat(b)` | `[...a, ...b]` |
+| Combines arrays | Unpacks elements |
+| Returns new array | Creates new array in this context |
+| Easy for simple merging | More flexible |
+
+Example:
+
+```js
+const a = [1, 2];
+const b = [3, 4];
+
+const result1 = a.concat(b);
+
+const result2 = [...a, ...b];
+
+console.log(result1);
+console.log(result2);
+```
+
+Both produce:
+
+```text
+[1, 2, 3, 4]
+```
+
+
+
+## 🔹 13. `flat()`
+
+`flat()` creates a new array by **flattening nested arrays**.
+
+Example:
+
+```js
+const anotherArr = [
+    1,
+    2,
+    3,
+    [4, 5, 6],
+    7,
+    [6, 7, [8, 9]]
+];
+
+const realAnotherArr = anotherArr.flat(Infinity);
+
+console.log(realAnotherArr);
+```
+
+Output:
+
+```text
+[1, 2, 3, 4, 5, 6, 7, 6, 7, 8, 9]
+```
+
+### What does `Infinity` mean?
+
+```js
+array.flat(Infinity)
+```
+
+means:
+
+> Flatten the array at **all nested levels**.
+
+
+
+### Interview Definition
+
+> `flat()` creates a new array with nested arrays flattened up to the specified depth.
+
+
+
+## 🔹 14. `Array.isArray()`
+
+`Array.isArray()` checks whether a value is actually an array.
+
+It returns:
+
+```text
+true
+false
+```
+
+Example:
+
+```js
+console.log(Array.isArray("Akash Mondal"));
+```
+
+Output:
+
+```text
+false
+```
+
+```js
+console.log(Array.isArray(["Akash", "Mondal"]));
+```
+
+Output:
+
+```text
+true
+```
+
+### Interview Definition
+
+> `Array.isArray()` determines whether the given value is an array.
+
+### Why not use `typeof`?
+
+```js
+console.log(typeof []);
+```
+
+Output:
+
+```text
+object
+```
+
+Therefore:
+
+```js
+Array.isArray([])
+```
+
+is the preferred way to check whether a value is an array.
+
+
+
+## 🔹 15. `Array.from()`
+
+`Array.from()` creates a **new array from an iterable or array-like object**.
+
+Example:
+
+```js
+console.log(Array.from("Akash Mondal"));
+```
+
+Output:
+
+```text
+[
+    "A", "k", "a", "s",
+    "h", " ", "M", "o",
+    "n", "d", "a", "l"
+]
+```
+
+### Workflow
+
+```text
+"Akash"
+   ↓
+Array.from()
+   ↓
+["A", "k", "a", "s", "h"]
+```
+
+### Interview Definition
+
+> `Array.from()` creates a new array from an iterable or array-like value.
+
+
+
+
+## 🔹 16. `Array.from()` with Object
+
+Consider:
+
+```js
+console.log(
+    Array.from({ name: "AKASH" })
+);
+```
+
+Output:
+
+```text
+[]
+```
+
+Why?
+
+Because the object:
+
+```js
+{ name: "AKASH" }
+```
+
+is **not iterable** and does not provide the required array-like indexed properties.
+
+So:
+
+```js
+Array.from({ name: "AKASH" })
+```
+
+returns:
+
+```js
+[]
+```
+
+If you want to convert an object's values into an array, you can use:
+
+```js
+const user = {
+    name: "AKASH",
+    age: 23
+};
+
+console.log(Object.values(user));
+```
+
+Output:
+
+```text
+["AKASH", 23]
+```
+
+
+
+## 📌 Array Methods Quick Revision
+
+| Method | Purpose | Original Array Modified? |
+|---|---|---|
+| `push()` | Add at end | ✅ Yes |
+| `pop()` | Remove from end | ✅ Yes |
+| `unshift()` | Add at beginning | ✅ Yes |
+| `shift()` | Remove from beginning | ✅ Yes |
+| `includes()` | Check if value exists | ❌ No |
+| `indexOf()` | Find first index | ❌ No |
+| `join()` | Array → String | ❌ No |
+| `slice()` | Extract portion | ❌ No |
+| `splice()` | Add/remove/replace | ✅ Yes |
+| `concat()` | Combine arrays | ❌ No |
+| `flat()` | Flatten nested arrays | ❌ No |
+| `Array.isArray()` | Check if array | ❌ No |
+| `Array.from()` | Create array from iterable/array-like | ❌ No |
+
 ---
-# ✅ 2. Arrays
+
+## 🎯 Most Important Interview Questions
+
+### 1. Is an Array an object in JavaScript?
+
+**Yes.**
+
+```js
+typeof [];
+// "object"
+```
+
+Arrays are a special type of object.
+
+---
+
+### 2. What is the difference between `slice()` and `splice()`?
+
+```text
+slice()
+→ Does not modify original array
+→ Extracts elements
+→ End index is excluded
+
+splice()
+→ Modifies original array
+→ Can add/remove/replace elements
+→ Second argument is deleteCount
+```
+
+---
+
+### 3. What does `push()` return?
+
+It returns the **new length of the array**.
+
+```js
+const arr = [1, 2];
+
+console.log(arr.push(3)); // 3
+```
+
+---
+
+### 4. What does `pop()` return?
+
+It returns the **removed element**.
+
+```js
+const arr = [1, 2, 3];
+
+console.log(arr.pop()); // 3
+```
+
+---
+
+### 5. What does `shift()` return?
+
+It returns the **removed first element**.
+
+---
+
+### 6. What does `unshift()` return?
+
+It returns the **new length of the array**.
+
+---
+
+### 7. Difference between `concat()` and `push()`?
+
+```text
+push()
+→ modifies original array
+→ returns new length
+
+concat()
+→ does not modify original array
+→ returns new combined array
+```
+
+---
+
+### 8. Is `...` a method?
+
+**No.**
+
+`...` is **spread syntax**.
+
+```js
+const a = [1, 2];
+const b = [3, 4];
+
+const result = [...a, ...b];
+```
+
+---
+
+### 9. What does `includes()` return?
+
+A Boolean:
+
+```js
+true
+false
+```
+
+---
+
+### 10. What does `indexOf()` return if an element is not found?
+
+```text
+-1
+```
+
+---
+
+### 11. How do you check whether a value is an array?
+
+```js
+Array.isArray(value);
+```
+
+---
+
+### 12. How do you flatten a deeply nested array?
+
+```js
+array.flat(Infinity);
+```
+
+---
+
+## 🧠 Array Methods — One-Line Memory
+
+```text
+push()          → Add at the END
+pop()           → Remove from the END
+
+unshift()       → Add at the BEGINNING
+shift()         → Remove from the BEGINNING
+
+includes()      → Check if VALUE exists
+indexOf()       → Find INDEX
+
+join()          → Array → String
+
+slice()         → Extract without changing original
+splice()        → Modify original array
+
+concat()        → Combine arrays
+...              → Spread / unpack elements
+
+flat()          → Flatten nested arrays
+
+Array.isArray() → Check if it is an array
+Array.from()    → Create an array from iterable/array-like data
+```
 
