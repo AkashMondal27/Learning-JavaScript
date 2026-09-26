@@ -1429,7 +1429,7 @@ String
 ---
  # 6️⃣ JavaScript Number & Math
 
-# 1. Number
+## 1. Number
 
 `Number` is a JavaScript data type used to represent **integers, decimals, positive numbers, and negative numbers**.
 
@@ -1506,7 +1506,7 @@ console.log(Number.MIN_SAFE_INTEGER);
 
 ---
 
-# Math Object
+## Math Object
 
 `Math` is a built-in JavaScript object that provides **mathematical constants and methods**.
 
@@ -1617,3 +1617,534 @@ Math
     ├── min()
     └── random()
 ```
+---
+# 7️⃣ JavaScript Date  Notes
+
+The **`Date` object** is one of the most commonly used built-in objects in JavaScript for working with **dates, times, timestamps, formatting, and date calculations**.
+
+
+
+## 1. Creating a Date
+
+### Current date and time
+
+```js
+const now = new Date();
+
+console.log(now);
+```
+
+`new Date()` creates a `Date` object containing the current date and time.
+
+```js
+console.log(typeof now);
+// object
+```
+
+## 2. Different Date Formats
+
+```js
+const date = new Date();
+
+console.log(date.toString());
+console.log(date.toDateString());
+console.log(date.toLocaleDateString());
+console.log(date.toLocaleString());
+console.log(date.toISOString());
+```
+
+| Method                 | Purpose                     |
+| ---------------------- | --------------------------- |
+| `toString()`           | Full date and time          |
+| `toDateString()`       | Date only                   |
+| `toLocaleDateString()` | Date in local format        |
+| `toLocaleString()`     | Date + time in local format |
+| `toISOString()`        | ISO 8601 format             |
+
+Example ISO format:
+
+```text
+2026-09-26T05:04:30.000Z
+```
+
+---
+
+## 3. Creating a Specific Date
+
+### Using numbers
+
+```js
+const date = new Date(2026, 0, 26);
+
+console.log(date.toDateString());
+```
+
+Output:
+
+```text
+Mon Jan 26 2026
+```
+
+### Important  Point ⚠️
+
+JavaScript months are **zero-indexed**.
+
+```text
+0  → January
+1  → February
+2  → March
+...
+11 → December
+```
+
+So:
+
+```js
+new Date(2026, 0, 26);
+```
+
+means  : **January 26, 2026**
+
+## 4. Date Using String
+
+```js
+const date = new Date("2026-09-26");
+
+console.log(date);
+```
+
+A common ISO date format is:
+
+```text
+YYYY-MM-DD
+```
+
+Example:
+
+```text
+2026-09-26
+```
+
+For predictable parsing, ISO-style date strings are generally preferred.
+
+
+## 5. Date Timestamp
+
+A **timestamp** represents a point in time as the number of milliseconds since:
+
+> **January 1, 1970 00:00:00 UTC**
+
+This point is commonly called the **Unix epoch**.
+
+### `Date.now()`
+
+```js
+const timestamp = Date.now();
+
+console.log(timestamp);
+```
+
+### `getTime()`
+
+```js
+const date = new Date("2026-09-26");
+
+console.log(date.getTime());
+```
+
+Both give a timestamp in **milliseconds**.
+
+
+
+## 6. Milliseconds → Seconds
+
+```js
+const timestamp = Date.now();
+
+console.log(Math.floor(timestamp / 1000));
+```
+
+Flow:
+
+```text
+Date.now()
+    ↓
+Milliseconds
+    ↓
+÷ 1000
+    ↓
+Seconds
+```
+
+
+## 7. Getting Individual Date Parts
+
+```js
+const date = new Date();
+
+console.log(date.getFullYear());
+console.log(date.getMonth());
+console.log(date.getDate());
+console.log(date.getDay());
+
+console.log(date.getHours());
+console.log(date.getMinutes());
+console.log(date.getSeconds());
+console.log(date.getMilliseconds());
+```
+
+### Important Methods
+
+| Method              | Returns              |
+| ------------------- | -------------------- |
+| `getFullYear()`     | Full year            |
+| `getMonth()`        | Month `0–11`         |
+| `getDate()`         | Day of month `1–31`  |
+| `getDay()`          | Day of week `0–6`    |
+| `getHours()`        | Hours `0–23`         |
+| `getMinutes()`      | Minutes `0–59`       |
+| `getSeconds()`      | Seconds `0–59`       |
+| `getMilliseconds()` | Milliseconds `0–999` |
+
+### Important Difference
+
+Don't confuse:
+
+```js
+getDate()
+```
+
+with:
+
+```js
+getDay()
+```
+
+```text
+getDate() → Day of month
+
+Example:
+26
+
+getDay() → Day of week
+
+Example:
+6 → Saturday
+```
+
+And:
+
+```text
+getMonth()
+0 → January
+```
+
+
+## 8. Setting Date Values
+
+JavaScript also provides `set` methods.
+
+```js
+const date = new Date();
+
+date.setFullYear(2030);
+date.setMonth(5);
+date.setDate(15);
+
+console.log(date);
+```
+
+### Common Set Methods
+
+| Method              | Changes      |
+| ------------------- | ------------ |
+| `setFullYear()`     | Year         |
+| `setMonth()`        | Month        |
+| `setDate()`         | Day          |
+| `setHours()`        | Hours        |
+| `setMinutes()`      | Minutes      |
+| `setSeconds()`      | Seconds      |
+| `setMilliseconds()` | Milliseconds |
+
+
+
+## 9. Formatting with `toLocaleString()`
+
+This is very useful in real projects.
+
+```js
+const date = new Date();
+
+console.log(
+    date.toLocaleString("en-IN", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    })
+);
+```
+
+Example:
+
+```text
+Saturday, September 26, 2026
+```
+
+You can also format time:
+
+```js
+console.log(
+    date.toLocaleString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    })
+);
+```
+
+
+
+## 10. Comparing Dates
+
+Dates can be compared using their timestamps.
+
+```js
+const date1 = new Date("2026-01-01");
+const date2 = new Date("2026-09-26");
+
+console.log(date1 < date2);
+// true
+```
+
+You can also use:
+
+```js
+console.log(date1.getTime() < date2.getTime());
+// true
+```
+
+### Interview Concept
+
+A `Date` object can be converted to its numeric timestamp using:
+
+```js
+date.getTime()
+```
+
+Then timestamps can be compared easily.
+
+
+
+## 11. Finding Difference Between Dates
+
+```js
+const start = new Date("2026-01-01");
+const end = new Date("2026-01-10");
+
+const difference = end - start;
+
+console.log(difference);
+```
+
+The result is in **milliseconds**.
+
+Convert it to days:
+
+```js
+const days = difference / (1000 * 60 * 60 * 24);
+
+console.log(days);
+// 9
+```
+
+### Flow
+
+```text
+Date 2 - Date 1
+       ↓
+Milliseconds
+       ↓
+÷ 1000
+       ↓
+Seconds
+       ↓
+÷ 60
+       ↓
+Minutes
+       ↓
+÷ 60
+       ↓
+Hours
+       ↓
+÷ 24
+       ↓
+Days
+```
+
+
+
+## 12. UTC Methods
+
+JavaScript also has UTC versions of many getter methods.
+
+```js
+const date = new Date();
+
+console.log(date.getFullYear());
+console.log(date.getUTCFullYear());
+
+console.log(date.getHours());
+console.log(date.getUTCHours());
+```
+
+### Difference
+
+```text
+getHours()
+    ↓
+Local time
+
+getUTCHours()
+    ↓
+UTC time
+```
+
+This becomes important when working with **servers, databases, APIs, and users in different time zones**.
+
+
+## 13. `toISOString()`
+
+Very common in APIs and backend development.
+
+```js
+const date = new Date();
+
+console.log(date.toISOString());
+```
+
+Example:
+
+```text
+2026-09-26T05:04:30.000Z
+```
+
+The `Z` indicates **UTC**.
+
+
+
+## 14. `Date.now()` vs `new Date()`
+
+### `Date.now()`
+
+Returns a **number**:
+
+```js
+console.log(Date.now());
+```
+
+### `new Date()`
+
+Returns a **Date object**:
+
+```js
+console.log(new Date());
+```
+
+|            | `Date.now()` | `new Date()` |
+| ---------- | ------------ | ------------ |
+| Returns    | Number       | Date object  |
+| Represents | Timestamp    | Date + time  |
+| Unit       | Milliseconds | Date object  |
+
+
+## 15. Important Interview Questions
+
+### Q1. What is the Date object?
+
+> The `Date` object is a built-in JavaScript object used to represent and manipulate dates and times.
+
+### Q2. What is the Unix epoch?
+
+> January 1, 1970 at 00:00:00 UTC. JavaScript timestamps are measured in milliseconds from this point.
+
+### Q3. What does `Date.now()` return?
+
+> The current timestamp in milliseconds.
+
+### Q4. What is the difference between `getDate()` and `getDay()`?
+
+```text
+getDate() → Day of month: 1–31
+getDay()  → Day of week: 0–6
+```
+
+### Q5. Why is January `0` in JavaScript?
+
+> The `getMonth()` method uses zero-based indexing, where January is `0` and December is `11`.
+
+### Q6. What is the difference between `Date.now()` and `new Date()`?
+
+> `Date.now()` returns a timestamp number, while `new Date()` returns a Date object.
+
+### Q7. What is `toISOString()`?
+
+> It converts a Date into an ISO 8601 formatted string, normally represented in UTC.
+
+
+
+## Quick  Cheat Sheet
+
+```text
+Date
+│
+├── Create
+│   ├── new Date()
+│   ├── new Date("2026-09-26")
+│   └── new Date(2026, 0, 26)
+│
+├── Get
+│   ├── getFullYear()
+│   ├── getMonth()
+│   ├── getDate()
+│   ├── getDay()
+│   ├── getHours()
+│   ├── getMinutes()
+│   └── getSeconds()
+│
+├── Set
+│   ├── setFullYear()
+│   ├── setMonth()
+│   ├── setDate()
+│   ├── setHours()
+│   └── setMinutes()
+│
+├── Format
+│   ├── toString()
+│   ├── toDateString()
+│   ├── toLocaleDateString()
+│   ├── toLocaleString()
+│   └── toISOString()
+│
+└── Timestamp
+    ├── Date.now()
+    └── getTime()
+```
+
+### ⭐ Most Important to Remember
+
+```text
+getMonth() → 0–11
+getDate()  → 1–31
+getDay()   → 0–6
+
+Date.now() → milliseconds timestamp
+
+getTime()  → milliseconds timestamp
+
+toISOString() → ISO/UTC string
+
+new Date() → Date object
+```
+
+
