@@ -2912,7 +2912,7 @@ typeof [];
 
 Arrays are a special type of object.
 
----
+
 
 ### 2. What is the difference between `slice()` and `splice()`?
 
@@ -2928,7 +2928,7 @@ splice()
 → Second argument is deleteCount
 ```
 
----
+
 
 ### 3. What does `push()` return?
 
@@ -2940,7 +2940,7 @@ const arr = [1, 2];
 console.log(arr.push(3)); // 3
 ```
 
----
+
 
 ### 4. What does `pop()` return?
 
@@ -2952,19 +2952,19 @@ const arr = [1, 2, 3];
 console.log(arr.pop()); // 3
 ```
 
----
+
 
 ### 5. What does `shift()` return?
 
 It returns the **removed first element**.
 
----
+
 
 ### 6. What does `unshift()` return?
 
 It returns the **new length of the array**.
 
----
+
 
 ### 7. Difference between `concat()` and `push()`?
 
@@ -2978,7 +2978,7 @@ concat()
 → returns new combined array
 ```
 
----
+
 
 ### 8. Is `...` a method?
 
@@ -2993,7 +2993,6 @@ const b = [3, 4];
 const result = [...a, ...b];
 ```
 
----
 
 ### 9. What does `includes()` return?
 
@@ -3004,7 +3003,7 @@ true
 false
 ```
 
----
+
 
 ### 10. What does `indexOf()` return if an element is not found?
 
@@ -3012,7 +3011,7 @@ false
 -1
 ```
 
----
+
 
 ### 11. How do you check whether a value is an array?
 
@@ -3020,7 +3019,7 @@ false
 Array.isArray(value);
 ```
 
----
+
 
 ### 12. How do you flatten a deeply nested array?
 
@@ -3028,7 +3027,6 @@ Array.isArray(value);
 array.flat(Infinity);
 ```
 
----
 
 ## 🧠 Array Methods — One-Line Memory
 
@@ -3056,3 +3054,522 @@ Array.isArray() → Check if it is an array
 Array.from()    → Create an array from iterable/array-like data
 ```
 
+---
+
+#  ✅ 3. JavaScript Objects
+
+## 1. Object
+
+**Definition:**  
+An object is a collection of related data and functions stored as **key-value pairs**.
+
+```js
+const user = {
+  name: "Akash",
+  age: 18
+};
+
+console.log(user);
+```
+
+**Output:**
+
+```js
+{ name: "Akash", age: 18 }
+```
+
+
+
+## 2. Property
+
+**Definition:**  
+A property is a key-value pair that stores data inside an object.
+
+```js
+const user = {
+  name: "Akash"
+};
+
+console.log(user.name);
+```
+
+**Output:**
+
+```text
+Akash
+```
+
+Here, `name` is the property key and `"Akash"` is its value.
+
+
+
+## 3. Object Literal
+
+**Definition:**  
+An object literal is an object created using curly braces `{}`.
+
+```js
+const car = {
+  brand: "Toyota",
+  color: "White"
+};
+```
+
+This is the most common way to create an object.
+
+
+
+## 4. Object Method
+
+**Definition:**  
+A function stored inside an object is called a method.
+
+```js
+const user = {
+  name: "Akash",
+
+  greet() {
+    return "Hello";
+  }
+};
+
+console.log(user.greet());
+```
+
+**Output:**
+
+```text
+Hello
+```
+
+
+
+## 5. `this` Keyword
+
+**Definition:**  
+Inside an object method, `this` refers to the object that called the method.
+
+```js
+const user = {
+  name: "Akash",
+
+  introduce() {
+    return `My name is ${this.name}`;
+  }
+};
+
+console.log(user.introduce());
+```
+
+**Output:**
+
+```text
+My name is Akash
+```
+
+
+
+## 6. Accessing Properties
+
+### Dot notation
+
+```js
+console.log(user.name);
+```
+
+### Bracket notation
+
+```js
+console.log(user["name"]);
+```
+
+Both produce:
+
+```text
+Akash
+```
+
+Bracket notation is useful for dynamic keys:
+
+```js
+const key = "name";
+console.log(user[key]);
+```
+
+**Output:**
+
+```text
+Akash
+```
+
+
+
+## 7. Adding, Updating, and Deleting
+
+```js
+const user = {
+  name: "Akash"
+};
+
+user.age = 18;        // add
+user.name = "Sumon";  // update
+delete user.age;      // delete
+
+console.log(user);
+```
+
+**Output:**
+
+```js
+{ name: "Sumon" }
+```
+
+
+
+## 8. Nested Object
+
+**Definition:**  
+An object inside another object is called a nested object.
+
+```js
+const student = {
+  name: "Akash",
+  address: {
+    city: "Kolkata",
+    pin: 700001
+  }
+};
+
+console.log(student.address.city);
+```
+
+**Output:**
+
+```text
+Kolkata
+```
+
+
+
+## 9. Object Destructuring
+
+**Definition:**  
+Destructuring extracts properties from an object into variables.
+
+```js
+const course = {
+  title: "JavaScript",
+  price: 2022
+};
+
+const { title, price } = course;
+
+console.log(title);
+console.log(price);
+```
+
+**Output:**
+
+```text
+JavaScript
+2022
+```
+
+Rename a property:
+
+```js
+const { price: amount } = course;
+
+console.log(amount);
+```
+
+**Output:**
+
+```text
+2022
+```
+
+
+
+## 10. Spread Operator
+
+**Definition:**  
+The spread operator `...` copies or combines object properties.
+
+```js
+const first = {
+  name: "Akash",
+  age: 18
+};
+
+const second = {
+  age: 20,
+  city: "Kolkata"
+};
+
+const result = { ...first, ...second };
+
+console.log(result);
+```
+
+**Output:**
+
+```js
+{ name: "Akash", age: 20, city: "Kolkata" }
+```
+
+When duplicate keys exist, the later value wins.
+
+
+
+## 11. `Object.assign()`
+
+**Definition:**  
+`Object.assign()` copies properties from one or more objects into a target object.
+
+```js
+const first = {
+  name: "Akash"
+};
+
+const second = {
+  age: 18
+};
+
+const result = Object.assign({}, first, second);
+
+console.log(result);
+```
+
+**Output:**
+
+```js
+{ name: "Akash", age: 18 }
+```
+
+
+
+## 12. Shallow Copy
+
+**Definition:**  
+A shallow copy copies only the first level. Nested objects still share the same reference.
+
+```js
+const original = {
+  name: "Akash",
+  address: {
+    city: "Kolkata"
+  }
+};
+
+const copy = { ...original };
+
+copy.address.city = "Delhi";
+
+console.log(original.address.city);
+```
+
+**Output:**
+
+```text
+Delhi
+```
+
+Changing the nested object also changed the original.
+
+
+
+## 13. Deep Copy
+
+**Definition:**  
+A deep copy creates a completely independent copy, including nested objects.
+
+```js
+const original = {
+  name: "Akash",
+  address: {
+    city: "Kolkata"
+  }
+};
+
+const copy = structuredClone(original);
+
+copy.address.city = "Delhi";
+
+console.log(original.address.city);
+console.log(copy.address.city);
+```
+
+**Output:**
+
+```text
+Kolkata
+Delhi
+```
+
+
+
+## 14. `Object.keys()`, `Object.values()`, and `Object.entries()`
+
+```js
+const user = {
+  name: "Akash",
+  age: 18
+};
+
+console.log(Object.keys(user));
+console.log(Object.values(user));
+console.log(Object.entries(user));
+```
+
+**Output:**
+
+```js
+["name", "age"]
+
+["Akash", 18]
+
+[
+  ["name", "Akash"],
+  ["age", 18]
+]
+```
+
+
+
+## 15. `Object.freeze()`
+
+**Definition:**  
+`Object.freeze()` prevents adding, deleting, or updating properties.
+
+```js
+const user = {
+  name: "Akash"
+};
+
+Object.freeze(user);
+
+user.name = "Sumon";
+
+console.log(user.name);
+```
+
+**Output:**
+
+```text
+Akash
+```
+
+
+
+## 16. `Object.seal()`
+
+**Definition:**  
+`Object.seal()` prevents adding and deleting properties, but existing properties can be updated.
+
+```js
+const user = {
+  name: "Akash"
+};
+
+Object.seal(user);
+
+user.name = "Sumon"; // allowed
+user.age = 18;       // not allowed
+
+console.log(user);
+```
+
+**Output:**
+
+```js
+{ name: "Sumon" }
+```
+
+
+
+## 17. Symbol Property
+
+**Definition:**  
+A `Symbol` is a unique primitive value commonly used as an object key.
+
+```js
+const id = Symbol("id");
+
+const user = {
+  name: "Akash",
+  [id]: 101
+};
+
+console.log(user[id]);
+```
+
+**Output:**
+
+```text
+101
+```
+
+
+
+## 18. Object Reference
+
+**Definition:**  
+Objects are stored and compared by reference.
+
+```js
+const first = { name: "Akash" };
+const second = { name: "Akash" };
+
+console.log(first === second);
+```
+
+**Output:**
+
+```text
+false
+```
+
+They contain the same data but are different objects.
+
+```js
+const third = first;
+
+console.log(first === third);
+```
+
+**Output:**
+
+```text
+true
+```
+
+Both variables refer to the same object.
+
+
+
+## 19. Object Creation Terms
+
+```js
+const user1 = {};
+const user2 = new Object();
+```
+
+Both create objects. `{}` is the preferred syntax.
+
+“Single-turn object” and “non-single-turn object” are not standard JavaScript terms. You may be referring to a **singleton**, which means an application uses only one instance of an object.
+
+## 20. Key Interview Points
+
+- Objects store data as key-value pairs.
+- Functions inside objects are called methods.
+- `this` usually refers to the calling object.
+- Objects are reference types.
+- Spread syntax creates a shallow copy.
+- `structuredClone()` creates a deep copy.
+- `Object.freeze()` prevents all normal changes.
+- `Object.seal()` allows updates but prevents adding and deleting.
+- Duplicate properties use the last assigned value.
+- `Object.keys()` returns keys.
+- `Object.values()` returns values.
+- `Object.entries()` returns key-value pairs.
