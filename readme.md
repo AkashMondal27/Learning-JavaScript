@@ -3057,6 +3057,10 @@ Array.from()    → Create an array from iterable/array-like data
 ---
 
 #  ✅ 3. JavaScript Objects
+### MDN Documentation :- 
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
+---
 
 ## 1. Object
 
