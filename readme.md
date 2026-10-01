@@ -3763,5 +3763,98 @@ console.log(add(2, 3));
 ```
 
 
-## 2️⃣
+## 2️⃣ What is Scope in JavaScript?
+
+**Scope** means the **area of your code where a variable or function can be accessed**.
+
+Simple definition:
+
+> **Scope determines where a variable is accessible in your program.**
+
+Here, `a` exists only inside `{ }`. So its scope is that block.
+
+
+## Types of Scope in JavaScript
+
+The main scopes you should know are:
+
+### 1. Global Scope
+A variable declared outside functions/blocks.
+
+```js
+let name = "Akash";
+
+function test() {
+    console.log(name); // ✅
+}
+```
+
+`name` can be accessed from its global scope and inner scopes.
+
+
+### 2. Function Scope
+
+A variable declared inside a function is accessible within that function.
+
+```js
+function test() {
+    var x = 10;
+
+    console.log(x); // ✅
+}
+
+console.log(x); // ❌
+```
+
+
+
+### 3. Block Scope
+
+A variable declared with `let` or `const` inside `{ }` belongs to that block.
+
+```js
+if (true) {
+    let a = 10;
+    const b = 20;
+
+    console.log(a); // ✅
+    console.log(b); // ✅
+}
+
+console.log(a); // ❌
+console.log(b); // ❌
+```
+
+
+### 4. Lexical Scope
+
+This is related to **nested functions**.
+
+An inner function can access variables from its outer function.
+
+```js
+function one() {
+    const username = "Akash";
+
+    function two() {
+        console.log(username); // ✅
+    }
+
+    two();
+}
+```
+
+`two()` can access `username` because `username` is in its outer lexical scope.
+
+
+
+
+
+| Keyword | Scope |
+|---|---|
+| `var` | **Function Scope** |
+| `let` | **Block Scope** |
+| `const` | **Block Scope** |
+
+
 
