@@ -3060,7 +3060,6 @@ Array.from()    → Create an array from iterable/array-like data
 ### MDN Documentation :- 
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
----
 
 ## 1. Object
 
@@ -3577,3 +3576,192 @@ Both create objects. `{}` is the preferred syntax.
 - `Object.keys()` returns keys.
 - `Object.values()` returns values.
 - `Object.entries()` returns key-value pairs.
+
+---
+# ✅4. JavaScript Functions
+
+## 1️⃣ 1. What is a function?
+
+A function is a reusable block of code that performs a specific task.
+A function declaration creates a function using the `function` keyword.
+
+```js
+function greet() {
+  return "Hello, Akash";
+}
+
+console.log(greet());
+```
+
+**Output:**
+
+```text
+Hello, Akash
+```
+
+A function runs only when it is called.
+- `a` and `b` are parameters.
+- `10` and `13` are arguments.
+- `return` sends a value back from the function.
+
+
+
+## 2. Function without `return`
+
+```js
+function sayHello() {
+  console.log("Hello");
+}
+
+const result = sayHello();
+
+console.log(result);
+```
+
+**Output:**
+
+```text
+Hello
+undefined
+```
+
+If a function does not use `return`, it automatically returns `undefined`.
+
+
+
+## 3. Rest parameter
+
+**Definition:**  
+The rest parameter `...` collects multiple arguments into an array.
+
+```js
+function calculatePrice(...prices) {
+  return prices;
+}
+
+console.log(calculatePrice(10, 200, 50));
+```
+
+**Output:**
+
+```js
+[10, 200, 50]
+```
+
+Example that calculates the total:
+
+```js
+function calculateTotal(...prices) {
+  return prices.reduce((total, price) => total + price, 0);
+}
+
+console.log(calculateTotal(10, 200, 50));
+```
+
+**Output:**
+
+```text
+260
+```
+
+The rest parameter must be the last parameter:
+
+```js
+function example(first, ...others) {
+  console.log(first);
+  console.log(others);
+}
+
+example(10, 20, 30);
+```
+
+**Output:**
+
+```text
+10
+[20, 30]
+```
+
+
+
+## 4. Object passed to a function
+
+```js
+const user = {
+  username: "Akash Mondal",
+  price: 2024,
+  location: "Kolkata"
+};
+
+function handleObject(anyObject) {
+  return `Username: ${anyObject.username}, Price: ${anyObject.price}`;
+}
+
+console.log(handleObject(user));
+```
+
+**Output:**
+
+```text
+Username: Akash Mondal, Price: 2024
+```
+
+You can destructure the object directly:
+
+```js
+function handleObject({ username, price }) {
+  return `Username: ${username}, Price: ${price}`;
+}
+```
+
+
+
+## 5. Array passed to a function
+
+```js
+const myNewArray = [10, 11, 13, 16];
+
+function handleArray(getArray) {
+  return getArray[2];
+}
+
+console.log(handleArray(myNewArray));
+```
+
+**Output:**
+
+```text
+13
+```
+
+Array indexes start from `0`:
+
+```text
+Index:  0   1   2   3
+Value: 10  11  13  16
+```
+
+
+
+## 6. Function expression
+
+**Definition:**  
+A function expression stores a function inside a variable.
+
+```js
+const add = function (a, b) {
+  return a + b;
+};
+
+console.log(add(2, 3));
+```
+
+**Output:**
+
+```text
+5
+```
+
+
+## 2️⃣
+
