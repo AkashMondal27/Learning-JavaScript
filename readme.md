@@ -3857,4 +3857,219 @@ function one() {
 | `const` | **Block Scope** |
 
 
+## 3️⃣ What is `this`?
 
+`this` is a special keyword in JavaScript that refers to the **current execution context/object**.
+
+Its value depends on **how the function is called**.
+
+
+### 1. `this` inside an Object
+
+```js
+const user = {
+    username: "Akash",
+    price: 200,
+
+    welcomeMessage() {
+        // 'this' refers to the current object
+        console.log(`Welcome ${this.username} sir`);
+        console.log("Printing This:", this);
+    }
+};
+
+user.welcomeMessage();
+```
+
+**Output:**
+
+```text
+Welcome Akash sir
+Printing This: { username: 'Akash', price: 200, welcomeMessage: [Function] }
+```
+
+Here:
+
+```js
+this.username
+```
+
+refers to:
+
+```js
+user.username
+```
+
+So we can say:
+
+> Inside an object method, `this` generally refers to the object that called the method.
+
+
+### 2. `this` reflects the current object's values
+
+```js
+user.username = "Sujoy";
+
+user.welcomeMessage();
+```
+
+**Output:**
+
+```text
+Welcome Sujoy sir
+```
+
+Why?
+
+Because:
+
+```js
+this.username
+```
+
+gets the **current value** of `username` from the `user` object.
+
+
+### 3. `this` outside a function
+
+```js
+console.log(this);
+```
+
+In **Node.js CommonJS**, this can print:
+
+```text
+{}
+```
+
+In a **browser's regular script**, it generally refers to:
+
+```js
+window
+```
+
+So:
+
+```js
+console.log(this);
+```
+
+is environment-dependent when used at the top level.
+
+
+## 4. `this` inside a Regular Function
+
+```js
+function chai() {
+    let username = "Akash";
+
+    console.log(this.username);
+}
+
+chai();
+```
+
+Output:
+
+```text
+undefined
+```
+
+Why?
+
+Because:
+
+```js
+let username = "Akash";
+```
+
+creates a **local variable**.
+
+It does NOT create:
+
+```js
+this.username
+```
+
+These are different:
+
+```js
+let username = "Akash";   // local variable
+
+this.username             // property of the this object
+```
+
+
+### 5. `this` inside an Arrow Function
+
+```js
+const chai = () => {
+    let username = "Akash";
+
+    console.log(this.username);
+};
+
+chai();
+```
+
+Again, you should not expect `"Akash"`.
+
+Arrow functions **do not have their own `this`**.
+
+They inherit `this` from their **surrounding lexical scope**.
+
+This is called **lexical `this`**.
+
+
+
+### Important Difference
+
+### Regular function
+
+```js
+function chai() {
+    console.log(this);
+}
+```
+
+A regular function gets its `this` based on **how it is called**.
+
+### Arrow function
+
+```js
+const chai = () => {
+    console.log(this);
+};
+```
+
+An arrow function **inherits `this` from the surrounding scope**.
+
+
+
+## One Important Correction
+
+Your note says:
+
+> `"this" runs inside object not any functions , This is **not correct**.
+`
+
+
+`this` can be used:
+
+- inside object methods
+- inside regular functions
+- inside arrow functions
+- inside constructors
+- inside classes
+- at the top level
+
+The important thing is that **its value changes depending on the context/calling method**.
+
+### Easy way to remember
+
+```text
+Object method       → this = calling object
+Regular function    → this depends on how it is called
+Arrow function     → this comes from outer scope
+Constructor (new)   → this = newly created object
+```
