@@ -3957,7 +3957,7 @@ console.log(this);
 is environment-dependent when used at the top level.
 
 
-## 4. `this` inside a Regular Function
+### 4. `this` inside a Regular Function
 
 ```js
 function chai() {
@@ -4000,7 +4000,7 @@ this.username             // property of the this object
 ```
 
 
-### 5. `this` inside an Arrow Function
+## 4️⃣ `this` inside an Arrow Function
 
 ```js
 const chai = () => {
@@ -4073,3 +4073,102 @@ Regular function    → this depends on how it is called
 Arrow function     → this comes from outer scope
 Constructor (new)   → this = newly created object
 ```
+## 5️⃣ What is IIFE in JavaScript?
+
+**IIFE = Immediately Invoked Function Expression**
+
+An IIFE is a function that is **created and executed immediately** after it is defined.
+
+### Basic syntax
+
+```js
+(function () {
+    console.log("DB connected");
+})();
+```
+
+Here:
+
+```js
+(function () {
+    console.log("DB connected");
+})
+```
+
+is the **function expression**, and:
+
+```js
+()
+```
+
+immediately **calls/invokes** the function.
+
+So the output is:
+
+```text
+DB connected
+```
+
+### 1. Named IIFE
+
+When the IIFE function has a name:
+
+```js
+(function chai() {
+    console.log("DB connected");
+})();
+```
+
+Here:
+
+- `chai` → function name
+- `()` → immediately invokes the function
+
+This is called a **Named IIFE**.
+
+
+
+### 2. IIFE with Parameter
+
+An IIFE can also accept parameters:
+
+```js
+((name) => {
+    console.log(`Name IIFE ${name}`);
+})("Akash Mondal");
+```
+
+Here:
+
+```js
+(name)
+```
+
+is the **parameter**.
+
+And:
+
+```js
+("Akash Mondal")
+```
+
+is the **argument** passed to it.
+
+Output:
+
+```text
+Name IIFE Akash Mondal
+```
+
+### Why use IIFE?
+
+One important use is to create a **private scope**, so variables inside the IIFE don't directly pollute the surrounding/global scope.
+
+```js
+(function () {
+    const password = "12345";
+    console.log(password);
+})();
+```
+
+`password` is accessible inside the IIFE, but not outside it.
