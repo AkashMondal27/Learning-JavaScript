@@ -419,7 +419,6 @@ console.log(user1.name);
 
 Both `user1` and `user2` refer to the **same object**.
 
----
 # 2️⃣ Type Conversion in JavaScript
 
 ## 1. What is Type Conversion?
@@ -916,7 +915,6 @@ Number()  → converts a value to Number
 String()  → converts a value to String
 Boolean() → converts a value to Boolean
 ```
----
 # 3️⃣ What is an Operator in JavaScript?
 
 An **operator** is a special symbol or keyword used to **perform an operation on one or more values (operands)**.
@@ -1130,7 +1128,15 @@ console.log(!(age >= 18));
 The main difference is **type conversion**.
 
 ---
-# `==` VS `===` 
+# `= vs ==` VS `===` 
+ ### `=` — Assignment Operator
+ `=` means "put this value into this variable."
+ ```
+ let age = 18;
+ console.log (age)  // 18
+ ```
+
+
 ### `==` — Loose Equality
 
 `==` compares the values **after converting the types if necessary**.
@@ -1177,15 +1183,28 @@ Type same?  → No
 
 ### Easy Comparison
 
-| Operator | Name            | Type Conversion | Example     | Result  |
-| -------- | --------------- | --------------- | ----------- | ------- |
-| `==`     | Loose Equality  | Yes             | `5 == "5"`  | `true`  |
-| `===`    | Strict Equality | No              | `5 === "5"` | `false` |
+
+
+| Operator | Name | Purpose | Type Conversion | Example | Result |
+|---|---|---|---|---|---|
+| `=` | Assignment | Assigns a value | — | `let x = 5` | `x` becomes `5` |
+| `==` | Loose Equality | Compares values | Yes | `5 == "5"` | `true` |
+| `===` | Strict Equality | Compares value + type | No | `5 === "5"` | `false` |
+
+
+
+```text
+=     → Assign
+==    → Compare value
+===   → Compare value + type
+```
+
+
 
 ### Interview Definition
 
-> **`==` checks equality after type conversion, while `===` checks equality without type conversion and requires both the value and data type to be the same.**
-----
+> **`=`  put the value into the variable. `==` checks equality after type conversion, while `===` checks equality without type conversion and requires both the value and data type to be the same.**
+
 # 4️⃣STACK & HEAP 
 ### Stack:-
 
@@ -1268,7 +1287,6 @@ HEAP
 Object → Reference is copied
 ```
 
-----
 
 
 # 5️⃣ String Methods — JavaScript
@@ -1431,7 +1449,7 @@ String
 
 **Note:** Methods such as `anchor()`, `big()`, `blink()`, `bold()`, `fixed()`, `fontcolor()`, `fontsize()`, `italics()`, `link()`, `small()`, `strike()`, `sub()`, and `sup()` appear in the browser's prototype because of legacy web APIs. **Don't use them in modern projects.**
 
----
+
  # 6️⃣ JavaScript Number & Math
 
 ## 1. Number
@@ -1622,7 +1640,6 @@ Math
     ├── min()
     └── random()
 ```
----
 # 7️⃣ JavaScript Date  Notes
 
 The **`Date` object** is one of the most commonly used built-in objects in JavaScript for working with **dates, times, timestamps, formatting, and date calculations**.
@@ -4492,4 +4509,185 @@ After it finishes:
 ```
 
 Finally, when the entire program finishes, the Global Execution Context is also removed.
+
+---
+# ✅5 Control flow in js 
+
+
+| Symbol / Keyword | Name | Use of |
+|---|---|---|
+| `if` | If Statement | Executes code when a condition is `true` |
+| `else` | Else Statement | Executes code when the `if` condition is `false` |
+| `else if` | Else-If Statement | Checks multiple conditions |
+| `switch` | Switch Statement | Executes different code based on a value |
+| `case` | Case | Defines a possible value inside `switch` |
+| `default` | Default Case | Executes when no `case` matches |
+| `for` | For Loop | Repeats code for a known number of iterations |
+| `while` | While Loop | Repeats code while a condition is `true` |
+| `do...while` | Do-While Loop | Executes code at least once, then repeats while condition is `true` |
+| `for...of` | For-Of Loop | Iterates over values of an iterable such as an array or string |
+| `for...in` | For-In Loop | Iterates over enumerable property keys of an object |
+| `break` | Break Statement | Immediately exits a loop or `switch` |
+| `continue` | Continue Statement | Skips the current loop iteration and moves to the next one |
+| `return` | Return Statement | Exits a function and optionally returns a value |
+
+### Quick Structure
+
+```text
+Control Flow
+│
+├── Conditional Statements
+│   ├── if
+│   ├── else
+│   ├── else if
+│   └── switch
+│       ├── case
+│       └── default
+│
+├── Loops
+│   ├── for
+│   ├── while
+│   ├── do...while
+│   ├── for...of
+│   └── for...in
+│
+└── Jump Statements
+    ├── break
+    ├── continue
+    └── return
+```
+Your notes are mostly correct. One important correction: **`[]` and `{}` are truthy**, even when they are empty.
+
+## Truthy and Falsy Values in JavaScript
+
+```js
+const username = [];
+
+if (username) {
+    console.log("Got the user name");
+} else {
+    console.log("Do not have any user name");
+}
+```
+
+Output:
+
+```text
+Got the user name
+```
+
+Why?
+
+```text
+[] → Truthy
+```
+
+An empty array is still an object, and **all objects are truthy**.
+
+---
+
+### Falsy Values
+
+| Value | Meaning |
+|---|---|
+| `false` | Boolean false |
+| `0` | Zero |
+| `-0` | Negative zero |
+| `0n` | BigInt zero |
+| `""` | Empty string |
+| `null` | No value |
+| `undefined` | Value not assigned |
+| `NaN` | Not a Number |
+
+> **Important:** `""` (empty string) is falsy. `" "` (space) is truthy.
+
+### Truthy Examples
+
+| Value | Result |
+|---|---|
+| `"0"` | Truthy |
+| `"false"` | Truthy |
+| `" "` | Truthy |
+| `[]` | Truthy |
+| `{}` | Truthy |
+| `function(){}` | Truthy |
+| `1` | Truthy |
+| `-1` | Truthy |
+
+
+
+## Checking Empty Array
+
+```js
+const username = [];
+
+if (username.length === 0) {
+    console.log("Array is empty");
+}
+```
+
+Because:
+
+```js
+[].length === 0 // true
+```
+
+For example:
+
+```js
+const username = ["Akash"];
+
+console.log(username.length); // 1
+```
+
+
+
+## Checking Empty Object
+
+```js
+const emptyObj = {};
+
+if (Object.keys(emptyObj).length === 0) {
+    console.log("Object is empty");
+}
+```
+
+### Why `Object.keys()`?
+
+```js
+const user = {
+    name: "Akash",
+    age: 20
+};
+
+console.log(Object.keys(user));
+```
+
+Output:
+
+```js
+["name", "age"]
+```
+
+Therefore:
+
+```js
+Object.keys(user).length // 2
+```
+
+For an empty object:
+
+```js
+Object.keys({}).length // 0
+```
+
+So:
+
+```js
+Object.keys(emptyObj).length === 0
+```
+
+means:
+
+> **"Does this object have zero enumerable properties?"**
 
