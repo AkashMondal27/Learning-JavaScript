@@ -4172,3 +4172,324 @@ One important use is to create a **private scope**, so variables inside the IIFE
 ```
 
 `password` is accessible inside the IIFE, but not outside it.
+---
+# Execution Context  & Call Stack in js 
+
+## 1. What is an Execution Context in JavaScript?
+
+An **Execution Context** is the environment in which JavaScript code is **evaluated and executed**.
+
+It contains things needed to run the code, such as:
+
+- Variables
+- Functions
+- Scope information
+- `this` value
+- Memory required for execution
+
+Think of it as a **container/environment where JavaScript code runs**.
+
+### Main types of Execution Context
+
+There are mainly **3 types**:
+
+1. **Global Execution Context (GEC)**
+2. **Function Execution Context (FEC)**
+3. **Eval Execution Context** — rarely used
+
+
+
+## 2. Global Execution Context
+
+When JavaScript starts executing a program, it first creates the **Global Execution Context**.
+
+Example:
+
+```js
+let val1 = 10;
+let val2 = 5;
+
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+let result = add(val1, val2);
+
+console.log(result);
+```
+
+The first thing created is:
+
+```text
+Global Execution Context
+```
+
+It is generally divided into **two phases**:
+
+### Phase 1: Memory Creation Phase
+
+JavaScript scans the code and allocates memory for variables and functions.
+
+```js
+let val1 = 10;
+let val2 = 5;
+
+function add(num1, num2) {
+    return num1 + num2;
+}
+```
+
+During memory creation:
+
+```text
+val1  → undefined
+val2  → undefined
+add   → complete function definition
+result → undefined
+```
+
+> Important: `let` and `const` are actually created in the **Lexical Environment** and remain uninitialized until their declaration is evaluated. They are not technically initialized to `undefined` like `var`. This is why accessing them before declaration causes the **Temporal Dead Zone (TDZ)** error.
+
+
+
+### Phase 2: Execution Phase
+
+Now JavaScript executes the code line by line.
+
+```js
+val1 = 10;
+val2 = 5;
+```
+
+So:
+
+```text
+val1 → 10
+val2 → 5
+```
+
+Then:
+
+```js
+let result = add(val1, val2);
+```
+
+JavaScript needs to execute `add()`, so it creates a **new Memory Creation  & Function Execution Context**.
+
+
+
+## 3. Memory creation & Function Execution Context
+### Phase 1: Memory Creation Phase
+
+During memory creation:
+
+```text
+val1  → undefined
+val2  → undefined
+num1 + num2 → undefined
+```
+
+### Phase 2: Execution Phase
+Whenever a function is called, JavaScript creates a **new Function Execution Context**.
+
+For:
+
+```js
+add(val1, val2);
+```
+
+a new context is created:
+
+```text
+Function Execution Context
+        ↓
+     add()
+```
+
+Inside it:
+
+```js
+function add(num1, num2) {
+    return num1 + num2;
+}
+```
+
+Memory/execution environment:
+
+```text
+num1 → 10
+num2 → 5
+```
+
+Then:
+
+```js
+return num1 + num2;
+```
+
+Result:
+
+```text
+15
+```
+
+*After the function finishes, its execution context is removed and control returns to the previous context.*
+
+
+
+## 4. What is the Call Stack?
+
+The **Call Stack** is a data structure JavaScript uses to keep track of **which execution context is currently running**.
+
+It follows:
+
+> **LIFO — Last In, First Out**
+
+Think of it like a stack of plates.
+
+```text
+        ↑
+     Last added
+     is removed first
+```
+
+
+
+## 5. Execution Context + Call Stack Flow
+
+Consider:
+
+```js
+let val1 = 10;
+let val2 = 5;
+
+function add(num1, num2) {
+    let total = num1 + num2;
+    return total;
+}
+
+let result = add(val1, val2);
+
+console.log(result);
+```
+
+### Step 1 — Global Execution Context
+
+JavaScript starts:
+
+```text
+Call Stack
+┌─────────────────────┐
+│ Global Execution    │
+│ Context             │
+└─────────────────────┘
+```
+
+
+### Step 2 — Memory Creation
+
+The global context stores the required variables/functions.
+
+```text
+val1   → uninitialized
+val2   → uninitialized
+add    → function
+result → uninitialized
+```
+
+
+### Step 3 — Execution
+
+JavaScript executes:
+
+```js
+val1 = 10;
+val2 = 5;
+```
+
+Then reaches:
+
+```js
+add(val1, val2);
+```
+
+
+
+### Step 4 — Function Execution Context Created
+
+A new context is pushed onto the stack:
+
+```text
+        ┌─────────────────────┐
+        │ add() Function EC   │ ← currently executing
+        ├─────────────────────┤
+        │ Global EC           │
+        └─────────────────────┘
+```
+
+Inside `add()`:
+
+```text
+num1 → 10
+num2 → 5
+total → 15
+```
+
+
+### Step 5 — Function Returns
+
+```js
+return total;
+```
+
+returns:
+
+```text
+15
+```
+
+The function execution context is removed:
+
+```text
+        ┌─────────────────────┐
+        │ Global EC           │ ← back to this
+        └─────────────────────┘
+```
+
+Then:
+
+```js
+result = 15;
+```
+
+
+### Step 6 — `console.log()`
+
+When:
+
+```js
+console.log(result);
+```
+
+runs, another function execution context is temporarily involved internally.
+
+Conceptually:
+
+```text
+        ┌─────────────────────┐
+        │ console.log()        │
+        ├─────────────────────┤
+        │ Global EC            │
+        └─────────────────────┘
+```
+
+After it finishes:
+
+```text
+        ┌─────────────────────┐
+        │ Global EC            │
+        └─────────────────────┘
+```
+
+Finally, when the entire program finishes, the Global Execution Context is also removed.
+
