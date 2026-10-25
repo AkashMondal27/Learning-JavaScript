@@ -4690,4 +4690,909 @@ Object.keys(emptyObj).length === 0
 means:
 
 > **"Does this object have zero enumerable properties?"**
+----
+# ✅6. JavaScript Loops 
+
+## 1. What are Loops in JavaScript?
+
+Loops are used to execute a block of code repeatedly until a specified condition becomes false or the iteration finishes.
+
+### Types of Loops
+
+1. `for` loop
+2. `while` loop
+3. `do...while` loop
+4. `for...of` loop
+5. `for...in` loop
+6. `forEach()` method
+
+
+## 2. For Loop
+
+A `for` loop is used when we know how many times we want to execute a block of code.
+
+### Syntax
+
+```javascript
+for (initialization; condition; update) {
+    // Code to execute
+}
+```
+
+### Example
+
+```javascript
+for (let index = 0; index < 10; index++) {
+    const element = index;
+    console.log(element);
+}
+```
+
+### Explanation
+
+- **Initialization:** `let index = 0` — initializes the counter.
+- **Condition:** `index < 10` — continues while the condition is true.
+- **Update:** `index++` — increases the counter by one.
+- **Body:** Executes the code during each iteration.
+
+**Output:**
+
+```text
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+
+## 3. Looping Through an Array Using a For Loop
+
+An array stores multiple values in a single variable. Array indexes start from `0`.
+
+### Example
+
+```javascript
+const array = ["A", "B", "C"];
+
+console.log(array.length); // 3
+
+for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    console.log(element);
+}
+```
+
+**Output:**
+
+```text
+3
+A
+B
+C
+```
+
+### Important Points
+
+- `array.length` returns the total number of elements.
+- `array[i]` accesses the element at index `i`.
+- The loop condition uses `i < array.length` to avoid accessing an invalid index.
+
+
+## 4. Break Statement
+
+The `break` statement immediately terminates the loop.
+
+### Example
+
+```javascript
+for (let i = 0; i < 20; i++) {
+    if (i === 7) {
+        console.log("Thala for a reason");
+        break;
+    }
+
+    console.log(`Value of i is ${i}`);
+}
+```
+
+**Output:**
+
+```text
+Value of i is 0
+Value of i is 1
+Value of i is 2
+Value of i is 3
+Value of i is 4
+Value of i is 5
+Value of i is 6
+Thala for a reason
+```
+
+**Remember:**  Once `break` executes, the loop stops completely.
+
+
+## 5. Continue Statement
+
+The `continue` statement skips the current iteration and proceeds to the next iteration.
+
+### Example
+
+```javascript
+for (let i = 0; i < 10; i++) {
+    if (i === 7) {
+        console.log("Thala for a reason");
+        continue;
+    }
+
+    console.log(`Value of i is ${i}`);
+}
+```
+
+**Output around the skipped iteration:**
+
+```text
+......
+....
+Value of i is 6
+Thala for a reason
+Value of i is 8
+...
+...
+```
+
+**Remember:**
+
+- `break` → terminates the loop.
+- `continue` → skips the current iteration.
+
+
+
+## 6. While Loop
+
+A `while` loop executes a block of code as long as its condition is true.
+
+### Syntax
+
+```javascript
+while (condition) {
+    // Code to execute
+}
+```
+
+### Example: Looping Through an Array
+
+```javascript
+const arr = ["1", "2", "3", "4", "5"];
+
+let i = 0;
+
+while (i < arr.length) {
+    console.log(`Value is ${arr[i]}`);
+    i++;
+}
+```
+
+**Output:**
+
+```text
+Value is 1
+Value is 2
+Value is 3
+Value is 4
+Value is 5
+```
+
+### Important Points
+
+- The condition is checked before every iteration.
+- If the condition is initially false, the loop never executes.
+- Update the counter properly to avoid an infinite loop.
+
+
+
+## 7. Do...While Loop
+
+A `do...while` loop executes the code block at least once, even if the condition is false.
+
+### Syntax
+
+```javascript
+do {
+    // Code to execute
+} while (condition);
+```
+
+### Example
+
+```javascript
+let score = 11;
+
+do {
+    console.log(`Score is ${score}`);
+    score++;
+} while (score <= 10);
+```
+
+**Output:**
+
+```text
+Score is 11
+```
+
+### Why?
+
+The code executes first, and the condition is checked afterward. Since `score` is already `11`, the condition `score <= 10` is false, so the loop stops after one execution.
+
+
+## 8. For...Of Loop
+
+The `for...of` loop is used to iterate over the **values of iterable objects**, such as arrays and strings.
+
+### Example: Array
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+
+for (const num of arr) {
+    console.log(num);
+}
+```
+
+**Output:**
+
+```text
+1
+2
+3
+4
+5
+```
+
+### Example: String
+
+```javascript
+const greeting = "Hello World";
+
+for (const char of greeting) {
+    console.log(char);
+}
+```
+
+The loop prints each character separately, including the space between the words.
+
+### Important Points
+
+- `for...of` returns values, not array indexes.
+- It works with arrays, strings, Maps, Sets, and other iterables.
+- It is a convenient way to read array elements.
+
+
+
+## 9. Iterating Through a Map
+
+A `Map` stores data as key-value pairs. Keys can be of different data types.
+
+### Creating a Map
+
+```javascript
+const map = new Map();
+
+map.set("IN", "India");
+map.set("USA", "United States of America");
+
+console.log(map);
+```
+
+### Using For...Of
+
+```javascript
+for (const entry of map) {
+    console.log(entry);
+}
+```
+
+**Output:**
+
+```text
+["IN", "India"]
+["USA", "United States of America"]
+```
+
+Each entry is returned as a key-value pair.
+
+### Destructuring Map Entries
+
+```javascript
+for (const [key, value] of map) {
+    console.log(key, value);
+}
+```
+
+**Output:**
+
+```text
+IN India
+USA United States of America
+```
+
+### Can We Use For...In With Map?
+
+A normal `for...in` loop does not iterate through a Map's entries.
+
+```javascript
+for (const key in map) {
+    console.log(key);
+}
+```
+
+This generally prints nothing for a Map created using `new Map()`.
+
+**Use `for...of` to iterate over Map entries.**
+
+
+
+## 10. For...In Loop
+
+The `for...in` loop iterates over the enumerable property keys of an object.
+
+### Example: Object
+
+```javascript
+const myObj = {
+    js: "JavaScript",
+    cpp: "C++",
+    rb: "Ruby",
+    swift: "Swift by Apple"
+};
+
+for (const key in myObj) {
+    console.log(`${key}: ${myObj[key]}`);
+}
+```
+
+**Output:**
+
+```text
+js: JavaScript
+cpp: C++
+rb: Ruby
+swift: Swift by Apple
+```
+
+### Explanation
+
+- `key` contains the object's property name.
+- `myObj[key]` accesses the value associated with that key.
+- Use bracket notation when accessing a property through a variable.
+
+
+
+**Note:** For arrays, prefer `for...of` when you need values or a traditional `for` loop when you need indexes. `for...in` is primarily intended for object properties.
+
+
+
+## 11. forEach() Method
+
+The `forEach()` method executes a callback function once for each element in an array.
+
+### Example: Traditional Function
+
+```javascript
+const arr = ["aks", "java", "cpp"];
+
+arr.forEach(function (item) {
+    console.log(item);
+});
+```
+
+### Example: Arrow Function
+
+```javascript
+arr.forEach((item) => {
+    console.log(item);
+});
+```
+
+**Output:**
+
+```text
+aks
+java
+cpp
+```
+
+### Accessing Value, Index, and Array
+
+The callback can accept three parameters:
+
+```javascript
+const languages = ["JavaScript", "Java", "C++"];
+
+languages.forEach((item, index, array) => {
+    console.log("Value:", item);
+    console.log("Index:", index);
+    console.log("Array:", array);
+});
+```
+
+- `item` — current element.
+- `index` — current element's index.
+- `array` — the original array being traversed.
+
+**Important:** `forEach()` does not return a new array, and `break` cannot be used to terminate its iteration directly.
+
+
+
+## 12. Difference Between JavaScript Loops
+
+| Loop | Main purpose |
+|---|---|
+| `for` | Repeated execution with explicit initialization, condition, and update |
+| `while` | Repeats while a condition is true |
+| `do...while` | Executes at least once |
+| `for...of` | Iterates over iterable values |
+| `for...in` | Iterates over enumerable property keys |
+| `forEach()` | Calls a function for each array element |
+
+### Quick Revision
+
+```javascript
+// Traditional for loop
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+// While loop
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}
+
+// Do...while loop
+let j = 0;
+do {
+    console.log(j);
+    j++;
+} while (j < 5);
+
+// For...of: values
+const numbers = [10, 20, 30];
+for (const num of numbers) {
+    console.log(num);
+}
+
+// For...in: object keys
+const user = { name: "Akash", language: "JavaScript" };
+for (const key in user) {
+    console.log(key, user[key]);
+}
+
+// forEach: array elements
+numbers.forEach((num) => console.log(num));
+```
+
+
+---
+# ✅7.Js Array Methods: `map()`, `filter()`, and `reduce()`
+
+## 1. `filter()` Method
+
+The `filter()` method creates a new array containing only the elements that satisfy a specified condition.
+
+### Syntax
+
+```
+array.filter((element) => {
+    return condition;
+});
+```
+
+The callback must return a truthy or falsy result for each element.
+
+### Example 1: Filter Numbers Greater Than 4
+
+```
+const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const newNum = nums.filter((num) => num > 4);
+
+console.log(newNum);
+```
+
+**Output:**
+
+```
+[5, 6, 7, 8, 9, 10]
+```
+
+**Explanation:** Only numbers greater than `4` are included in the new array.
+
+### Example 2: Using `return`
+
+When you use curly braces `{}`, you must explicitly write `return` if you want to return the condition's result.
+
+```
+const newNum1 = nums.filter((num) => {
+    return num < 4;
+});
+
+console.log(newNum1);
+```
+
+**Output:**
+
+```
+[1, 2, 3]
+```
+
+Both of these approaches work:
+
+```
+// Implicit return
+nums.filter((num) => num > 4);
+
+// Explicit return
+nums.filter((num) => {
+    return num > 4;
+});
+```
+
+### Real-World Example: Filtering Books
+
+Suppose we have an array of book objects and want to find books based on their edition or genre.
+
+```
+const books = [
+    {
+        title: "The Alchemist",
+        genre: "Fiction",
+        publication: "HarperOne",
+        edition: "25th Anniversary Edition",
+        author: "Paulo Coelho"
+    },
+    {
+        title: "Atomic Habits",
+        genre: "Self-Help",
+        publication: "Avery",
+        edition: "2nd Edition",
+        author: "James Clear"
+    },
+    {
+        title: "Wings of Fire",
+        genre: "Autobiography",
+        publication: "Universities Press",
+        edition: "1st Edition",
+        author: "A. P. J. Abdul Kalam"
+    },
+    {
+        title: "The Great Gatsby",
+        genre: "Classic Fiction",
+        publication: "Charles Scribner's Sons",
+        edition: "1st Edition",
+        author: "F. Scott Fitzgerald"
+    },
+    {
+        title: "Rich Dad Poor Dad",
+        genre: "Personal Finance",
+        publication: "Warner Books",
+        edition: "2nd Edition",
+        author: "Robert T. Kiyosaki"
+    }
+];
+```
+
+#### Example 3: Filter Books by Edition
+
+```
+const userBooks = books.filter(
+    (bk) => bk.edition === "1st Edition"
+);
+
+console.log("First edition books:", userBooks);
+```
+
+**Result:** Returns the book objects for *Wings of Fire* and *The Great Gatsby*.
+
+#### Example 4: Filter by Multiple Conditions
+
+```
+const userBooks2 = books.filter((bk) => {
+    return bk.edition === "2nd Edition" &&
+           bk.genre === "Personal Finance";
+});
+
+console.log("Matching books:", userBooks2);
+```
+
+**Result:** Returns *Rich Dad Poor Dad* because it satisfies both conditions.
+
+**Important:** The `&&` operator means both conditions must be true.
+
+
+
+## 2. `map()` Method
+
+The `map()` method executes a callback for each array element and returns a new array containing the callback's returned values.
+
+It is useful when you want to transform data without modifying the original array.
+
+### Syntax
+
+```
+const newArray = array.map((element) => {
+    return transformedValue;
+});
+```
+
+### Example 1: Add 10 to Every Number
+
+```
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const newNum = numbers.map((num) => {
+    return num + 10;
+});
+
+console.log("Original:", numbers);
+console.log("New numbers:", newNum);
+```
+
+**Output:**
+
+```
+Original: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+New numbers: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+```
+
+The original array remains unchanged.
+
+### Example 2: Multiply Every Number by 10
+
+```
+const numbers = [1, 2, 3, 4, 5];
+
+const result = numbers.map((num) => num * 10);
+
+console.log(result);
+```
+
+**Output:**
+
+```
+[10, 20, 30, 40, 50]
+```
+
+### Example 3: Chaining Multiple `map()` Methods
+
+You can chain multiple array methods together. Each method operates on the result returned by the previous method.
+
+```
+const numbers = [1, 2, 3, 4, 5];
+
+const newNum = numbers
+    .map((num) => num * 10)
+    .map((num) => num + 1);
+
+console.log(newNum);
+```
+
+**Output:**
+
+```
+[11, 21, 31, 41, 51]
+```
+
+**Step-by-step execution:**
+
+1. Original array: `[1, 2, 3, 4, 5]`
+2. First `map()`, multiply by 10: `[10, 20, 30, 40, 50]`
+3. Second `map()`, add 1: `[11, 21, 31, 41, 51]`
+
+**Correction to remember:** The second `map()` works on the output of the first `map()`, not on the original array.
+
+### Example 4: Extract Book Titles
+
+```
+const bookTitles = books.map((book) => book.title);
+
+console.log(bookTitles);
+```
+
+**Output:**
+
+```
+[
+    "The Alchemist",
+    "Atomic Habits",
+    "Wings of Fire",
+    "The Great Gatsby",
+    "Rich Dad Poor Dad"
+]
+```
+
+This is useful when you need only one property from an array of objects.
+
+
+
+## 3. `reduce()` Method
+
+The `reduce()` method processes array elements one by one and combines them into an accumulated result.
+
+It can calculate sums, products, averages, totals, grouped data, and more.
+
+### Syntax
+
+```
+array.reduce((accumulator, currentValue) => {
+    return updatedAccumulator;
+}, initialValue);
+```
+
+### Important Parameters
+
+- **`accumulator`** — stores the accumulated result from previous iterations.
+- **`currentValue`** — the current element being processed.
+- **`initialValue`** — the starting value of the accumulator.
+
+### Example 1: Calculate the Sum of an Array
+
+```
+const numbers = [1, 2, 3];
+
+const initialValue = 0;
+
+const sumWithInitial = numbers.reduce(
+    (accumulator, currentValue) => {
+        console.log(
+            `Accumulator: ${accumulator}, Current value: ${currentValue}`
+        );
+
+        return accumulator + currentValue;
+    },
+    initialValue
+);
+
+console.log("Total sum:", sumWithInitial);
+```
+
+**Output:**
+
+```
+Accumulator: 0, Current value: 1
+Accumulator: 1, Current value: 2
+Accumulator: 3, Current value: 3
+Total sum: 6
+```
+
+### Step-by-Step Calculation
+
+| Iteration | Accumulator | Current Value | New Accumulator |
+| --------- | ----------- | ------------- | --------------- |
+| 1         | 0           | 1             | 1               |
+| 2         | 1           | 2             | 3               |
+| 3         | 3           | 3             | 6               |
+
+The final result is `6`.
+
+### Example 2: Calculate the Total Price
+
+```
+const prices = [100, 250, 300, 150];
+
+const totalPrice = prices.reduce((total, price) => {
+    return total + price;
+}, 0);
+
+console.log("Total price:", totalPrice);
+```
+
+**Output:**
+
+```
+Total price: 800
+```
+
+### Example 3: Calculate the Product
+
+```
+const numbers = [1, 2, 3, 4, 5];
+
+const product = numbers.reduce((acc, num) => {
+    return acc * num;
+}, 1);
+
+console.log(product);
+```
+
+**Output:**
+
+```
+120
+```
+
+The initial value is `1` because multiplying by `1` preserves the product.
+
+### Example 4: Count Occurrences
+
+```
+const fruits = [
+    "apple",
+    "banana",
+    "apple",
+    "orange",
+    "banana",
+    "apple"
+];
+
+const fruitCount = fruits.reduce((count, fruit) => {
+    count[fruit] = (count[fruit] || 0) + 1;
+    return count;
+}, {});
+
+console.log(fruitCount);
+```
+
+**Output:**
+
+```
+{
+    apple: 3,
+    banana: 2,
+    orange: 1
+}
+```
+
+Here, `reduce()` creates an object that counts how many times each fruit occurs.
+
+
+
+## 4. Chaining `filter()`, `map()`, and `reduce()`
+
+You can combine these methods to solve practical problems.
+
+### Example: Calculate the Total of Even Numbers
+
+```
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const total = numbers
+    .filter((num) => num % 2 === 0)
+    .map((num) => num * 10)
+    .reduce((sum, num) => sum + num, 0);
+
+console.log(total);
+```
+
+**Output:**
+
+```
+300
+```
+
+**Execution steps:**
+
+1. `filter()` selects even numbers: `[2, 4, 6, 8, 10]`
+2. `map()` multiplies each number by 10: `[20, 40, 60, 80, 100]`
+3. `reduce()` calculates their sum: `300`
+
+
+
+## 5. Difference Between `map()`, `filter()`, and `reduce()`
+
+| Feature          | `map()`                           | `filter()`                        | `reduce()`                        |
+| ---------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| Main purpose     | Transform                         | Select                            | Accumulate                        |
+| Callback returns | Transformed value                 | Truthy/falsy condition            | Updated accumulator               |
+| Result           | New array                         | New array                         | Accumulated result                |
+| Typical use      | Convert values                    | Find matching items               | Calculate totals                  |
+| Original array   | Not modified by the method itself | Not modified by the method itself | Not modified by the method itself |
+
+Note: A callback can still modify objects or other referenced values. Avoid unintended side effects.
 
